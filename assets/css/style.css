@@ -1,3 +1,296 @@
+:root {
+  --cc: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* font. Sora (latin) */
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sora/v12/xMQOuFFYT72X5wkB_18qmnndmScMnk-NKQI.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sora/v12/xMQOuFFYT72X5wkB_18qmnndmSdSnk-NKQI.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sora/v12/xMQOuFFYT72X5wkB_18qmnndmSdgnk-NKQI.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sora/v12/xMQOuFFYT72X5wkB_18qmnndmSeMmU-NKQI.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* font. Lora (latin) */
+@font-face {
+  font-family: "Lora";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lora/v35/0QI8MX1D_JOuMw_hLdO6T2wV9KnW-MoFoq92nA.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkq0.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* font. Parkinsans x Mulish (latin) */
+@font-face {
+  font-family: "Parkinsans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/parkinsans/v1/-W_uXJXvQyPb1QfpBpRrVEgjj0W4zSUk4gSI6S8N8cc.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/parkinsans/v1/-W_uXJXvQyPb1QfpBpRrVEgjj0W4zSUk4gTW6S8N8cc.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/parkinsans/v1/-W_uXJXvQyPb1QfpBpRrVEgjj0W4zSUk4gTk6S8N8cc.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/parkinsans/v1/-W_uXJXvQyPb1QfpBpRrVEgjj0W4zSUk4gQx7i8N8cc.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/mulish/v13/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSd-OfGZQ6.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/mulish/v13/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSKeOfGZQ6.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/mulish/v13/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSG-OfGZQ6.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Parkinsans";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/mulish/v13/1Ptwg83HX_SGhgqk2hAjQlW_mEuZ0FsSzuSfGZQ6.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* font. Fira Code (latin) */
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/firacode/v22/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7Ng.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.font-primary {
+  font-family: "Parkinsans", sans-serif;
+}
+.font-heading {
+  font-family: "Sora", sans-serif;
+}
+.font-serif {
+  font-family: "Lora", serif;
+}
+.font-monospace {
+  font-family: "Fira Code", monospace;
+}
+
+.text-xxs {
+  font-size: 0.625rem;
+}
+
+.shadow-custom-white {
+  box-shadow: -0.2rem 0.2rem 0 0.2rem #fff;
+}
+
+.card-deco-img::before,
+.card-deco-img::after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  box-shadow: -0.2rem 0.2rem 0 0.2rem #fff; /* custom shadow */
+  border-bottom-left-radius: 10px;
+}
+
+.card-deco-img::before {
+  width: 0.625rem; /* w-2.5 */
+  left: 0;
+  bottom: 1rem; /* bottom-4 */
+}
+
+.card-deco-img::after {
+  width: 0.5rem; /* w-2 */
+  right: 4rem; /* right-8 */
+  bottom: 0;
+}
+
+.card-deco-img-bar {
+  position: absolute;
+  left: 0;
+  right: 4.5rem; /* right-10 */
+  bottom: 0;
+  min-height: 1rem;
+  background-color: white;
+  border-top-right-radius: 0.5rem;
+}
+
+.max-w-580 {
+  max-width: 580px;
+}
+
+/*  */
+:root {
+  --bg-primary: #ffffff; /* latar utama */
+  --bg-secondary: #f3f4f6; /* latar pendukung */
+  --bg-tertiary: #e5e7eb; /* latar tambahan */
+  --bg-invert: #111827; /* teks gelap untuk light background */
+  --bg-blur: rgba(255, 255, 255, 0.6); /* blur transparan */
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-invert: #ffffff;
+
+  --accent: #82181a;
+  --accent-hover: #460809;
+
+  --border-color: #ebe6e7;
+  --border-color-hover: #dadada;
+
+  --shadow: rgba(0, 0, 0, 0.05);
+}
+/* body{position:relative;margin:0;padding:0!important;width:100%;font-family:'Nunito', sans-serif;font-size:14px;color:var(--text-color-900);background-color:#f6f6f6;-webkit-font-smoothing: antialiased} .secIn{margin:0 auto;max-width:var(--contentW);} */
+
+body {
+  background-color: #fff;
+  font-size: 14px;
+}
+.inPage::before {
+  /* content: ""; */
+  background-color: black;
+  height: 240px;
+  position: absolute;
+  width: 100%;
+}
+.sectionItem:hover {
+  box-shadow: 0 0.5rem 2rem 0 #0026610d;
+  border-color: var(--border-color-hover);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.has:before {
+  left: 0px;
+  top: 8px;
+  box-shadow: -0.2rem -0.2rem 0 0.2rem #ffffff;
+  border-top-left-radius: 12px;
+}
+
+.has:after {
+  right: 0;
+  top: 8px;
+  box-shadow: 0.2rem -0.2rem 0 0.2rem #ffffff;
+  border-top-right-radius: 12px;
+}
+
+.has:before,
+.has:after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  width: 12px;
+}
+
+/*  */
+/* .place-center:where(.grid, .flex, .inline-flex)  */
+.place-center {
+  align-items: center;
+  justify-content: center;
+}
+.go::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.z--1 {
+  z-index: -1;
+}
+.z-0 {
+  z-index: 0;
+}
+.z-1 {
+  z-index: 1;
+}
+.z-2 {
+  z-index: 2;
+}
+.z-3 {
+  z-index: 3;
+}
+.z-4 {
+  z-index: 4;
+}
+.z-5 {
+  z-index: 5;
+}
 /*
 :root {
 --cc: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
