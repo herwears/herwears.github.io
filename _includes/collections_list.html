@@ -1,10 +1,10 @@
-<p>DEBUG: collection_id = {{ collection_id }}</p>
+<p>DEBUG: collection_id = {{ include.collection_id }}</p>
 
-<div class="sectionItem" id="{{ collection_id }}">
-  <h2>Produk untuk koleksi: {{ collection_id }}</h2>
+<div class="sectionItem" id="{{ include.collection_id }}">
+  <h2>Produk untuk koleksi: {{ include.collection_id }}</h2>
 
   <div class="grid grid-cols-3 gap-2">
-    {% for product in products %}
+    {% for product in include.products %}
       <div class="bg-gray-200 p-4 rounded">
         <p>{{ product.name }}</p>
         <p>Rp {{ product.price }}</p>
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="sectionItem relative bg-white rounded-xl p-4 mb-5 border" id="{{ collection_id }}">
+<div class="sectionItem relative bg-white rounded-xl p-4 mb-5 border" id="{{ include.collection_id }}">
   <div class="flex items-center mb-4">
     <div class="relative mr-3">
       <div class="bg-gray-200 rounded-full w-14 h-14 flex place-center"><span class="font-bold text-2xl">B</span></div>
@@ -43,5 +43,5 @@
       <span class="font-semibold text-sm text-center absolute bg-white m-1 p-1 rounded-md bottom-0 inset-x-0">$79.99</span>
     </div>
   </div>
-  <a class="absolute h-full w-full inset-0" href="/collections/{{ collection_id }}"></a>
+  <a class="absolute h-full w-full inset-0" href="/collections/{{ include.collection_id }}"></a>
 </div>
