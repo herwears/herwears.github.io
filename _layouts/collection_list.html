@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+<ul>
+  {% assign label = page.label %} {% for p in site.collections %} {% if p.label == label %}
+  <li>
+    <a href="{{ p.url }}">{{ p.title }}</a>
+  </li>
+  {% endif %} {% endfor %}
+</ul>
