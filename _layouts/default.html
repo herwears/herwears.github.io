@@ -1,0 +1,30 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}" />
+
+  <!-- <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}" /> -->
+  <!-- ✅ Tambahkan custom CSS kamu di bawah sini -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+
+  <!-- Favicon, fonts, dsb -->
+</head>
+<body>
+  <header>
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a></h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/collections">Collections</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <main>{{ content }}</main>
+
+  <footer>
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+  </footer>
+</body>
