@@ -1,5 +1,6 @@
 ---
-layout: default
+# layout: default
+layout: collection_list
 title: Beranda
 permalink: /
 ---
