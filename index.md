@@ -8,14 +8,13 @@ permalink: /
 <p>Pilih koleksi:</p>
 
 {% for collection in site.data.collections %}
-  <p>1</p>
   {% assign matched_product = site.data.products | where: "id", collection.id | first %}
   
-  {{ collection.id }}
-  
+  <p>Koleksi ID: {{ collection.id }}</p>
+
   {% if matched_product %}
-    <p>3</p>
     {% include collections_list.html product=matched_product %}
+  {% else %}
+    <p><em>Produk tidak ditemukan untuk koleksi ini.</em></p>
   {% endif %}
 {% endfor %}
-
