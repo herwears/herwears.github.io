@@ -1,24 +1,150 @@
 [
   {
-    "category": "kemeja",
-    "name": "Kemeja Biru",
-    "code": "KB001",
-    "image": "/assets/images/kemeja-1.jfif",
-    "link": "//",
-    "label": "Best Seller",
-    "rating": 4.8,
-    "price": "$59.99",
-    "sales": 1250
+    "title": "Featured Products gegegegeg",
+    "description": "Temukan Produk Terpopuler.",
+    "id": "chosen-by-our-experts",
+    "type": "collection",
+    "textSum": "[NUMBER] Products",
+    "products": [
+      {
+        "name": "Soundcore by Anker R50i NC",
+        "code": "COX001",
+        "image": "/src/assets/image/1.webp",
+        "link": "//",
+        "label": "Best Seller",
+        "rating": "4.8",
+        "price": "$59.99",
+        "sales": "1250"
+      },
+      {
+        "name": "Ellipsesinc - Kaos Oversize Pria Wanita Polos",
+        "code": "COX002",
+        "image": "/src/assets/image/2.webp",
+        "link": "//",
+        "label": "Top Rated",
+        "rating": "4.6",
+        "price": "$79.99",
+        "sales": "980"
+      },
+      {
+        "name": "KiiP Power Bank Wireless EW54 Magnetic Fast Charging 10.000Mah Standing - Promo Diskon",
+        "code": "COX003",
+        "image": "/src/assets/image/3.webp",
+        "link": "//",
+        "label": "Hot Deal",
+        "rating": "4.4",
+        "price": "$9.99",
+        "sales": "3420"
+      },
+      {
+        "name": "Baseus Airpow Air Lite Power Bank 10000mAh 12W (With: Simple Charging Cable USB to Type-C 3A 0.3m) | Power Bank FastCharging Powerbank",
+        "code": "COX004",
+        "image": "/src/assets/image/1.webp",
+        "link": "//",
+        "label": "Best Seller",
+        "rating": "4.8",
+        "price": "$59.99",
+        "sales": "1250"
+      },
+      {
+        "name": "Ormo Silicone Case Magsafe iPhone 15 I 15 PRO I 15 Pro Max iphone case",
+        "code": "COX005",
+        "image": "/src/assets/image/2.webp",
+        "link": "//",
+        "label": "Top Rated",
+        "rating": "4.6",
+        "price": "$79.99",
+        "sales": "980"
+      },
+      {
+        "name": "Robot RP-051C / RP-051L Mini Powerbank 4500mAh USB-C Lightning Cable - RP-051C BLACK",
+        "code": "COX006",
+        "image": "/src/assets/image/3.webp",
+        "link": "//",
+        "label": "Hot Deal",
+        "rating": "4.4",
+        "price": "$9.99",
+        "sales": "3420"
+      },
+      {
+        "name": "CIRCUIT MODUL POWER BANK LCD USB 5V 2.4A FAST CHARGER",
+        "code": "COX007",
+        "image": "/src/assets/image/1.webp",
+        "link": "//",
+        "label": "Best Seller",
+        "rating": "4.8",
+        "price": "$59.99",
+        "sales": "1250"
+      },
+      {
+        "name": "Anker MagGo Wireless Power Bank Magnetic Magsafe 15W Ultra slim, Qi2 Fast Charging Type C PD 10000 mAh - A1664 - White",
+        "code": "COX008",
+        "image": "/src/assets/image/2.webp",
+        "link": "//",
+        "label": "Top Rated",
+        "rating": "4.6",
+        "price": "$79.99",
+        "sales": "980"
+      },
+      {
+        "name": "UGREEN Powerbank Fast Charging Laptop Macbook Pro Air 20000mAh 25000mAh USB Type C - 20000 mAh",
+        "code": "COX009",
+        "image": "/src/assets/image/3.webp",
+        "link": "//",
+        "label": "Hot Deal",
+        "rating": "4.4",
+        "price": "$9.99",
+        "sales": "3420"
+      }
+    ]
   },
   {
-    "category": "topi",
-    "name": "Topi Hitam",
-    "code": "TP001",
-    "image": "/assets/images/1.webp",
-    "link": "//",
-    "label": "New Arrival",
-    "rating": 4.5,
-    "price": "$25.99",
-    "sales": 600
+    "title": "Kemeja Terkini",
+    "description": "Temukan kemeja terbaik untuk gayamu.",
+    "id": "kemeja",
+    "type": "collection",
+    "textSum": "[NUMBER] Products",
+    "products": [
+      {
+        "name": "Kemeja_1",
+        "code": "KMJ_002",
+        "image": "/src/assets/image/kemeja-1.jfif",
+        "link": "//",
+        "label": "Best Seller",
+        "rating": "4.8",
+        "price": "$59.99",
+        "sales": "1250"
+      },
+      {
+        "name": "Kemeja_2",
+        "code": "Kemeja_2a",
+        "image": "/src/assets/image/kemeja-2.jfif",
+        "link": "//",
+        "label": "Top Rated",
+        "rating": "4.6",
+        "price": "$79.99",
+        "sales": "980"
+      },
+      {
+        "name": "Kemeja_3",
+        "code": "Kemeja_3a",
+        "image": "/src/assets/image/kemeja-3.jfif",
+        "link": "//",
+        "label": "Hot Deal",
+        "rating": "4.4",
+        "price": "$9.99",
+        "sales": "3420"
+      },
+      {
+        "name": "Kemeja_4",
+        "code": "Kemeja_4a",
+        "image": "/src/assets/image/kemeja-4.jfif",
+        "link": "//",
+        "label": "Hot Deal",
+        "rating": "4.4",
+        "price": "$9.99",
+        "sales": "3420"
+      }
+    ]
   }
 ]
