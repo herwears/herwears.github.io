@@ -35,7 +35,7 @@ plugins:
   - jekyll-feed
 
 collections:
-  collection:
+  datacollections:
     output: true
     permalink: /collection/:name/
 # Exclude from processing.
