@@ -1,4 +1,17 @@
-<p>Collection ID: {{ collection_id }}</p>
+<p>DEBUG: collection_id = {{ collection_id }}</p>
+
+<div class="sectionItem" id="{{ collection_id }}">
+  <h2>Produk untuk koleksi: {{ collection_id }}</h2>
+
+  <div class="grid grid-cols-3 gap-2">
+    {% for product in products %}
+      <div class="bg-gray-200 p-4 rounded">
+        <p>{{ product.name }}</p>
+        <p>Rp {{ product.price }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
 
 <div class="sectionItem relative bg-white rounded-xl p-4 mb-5 border" id="{{ collection_id }}">
   <div class="flex items-center mb-4">
