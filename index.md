@@ -1,6 +1,5 @@
 ---
-# layout: default
-layout: collections_list
+layout: default
 title: Beranda
 permalink: /
 ---
@@ -8,9 +7,11 @@ permalink: /
 <h1>Beranda</h1>
 <p>Pilih koleksi:</p>
 
-<ul>
-  {% assign labels = site.collection | map: "label" | uniq | sort %}
-  {% for label in labels %}
-    <li><a href="/collection/{{ label | slugify }}/">{{ label | capitalize }}</a></li>
-  {% endfor %}
-</ul>
+{% for collection in site.data.collections %}
+  {% assign matched_product = site.data.products | where: "id", collection.id | first %}
+  
+  {% if matched_product %}
+    {% include collections_list.html product=matched_product %}
+  {% endif %}
+{% endfor %}
+
