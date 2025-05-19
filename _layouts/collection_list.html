@@ -5,7 +5,8 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 <div style="display: flex; flex-wrap: wrap; gap: 1rem">
-  {% assign kemeja_products = site.data.products | where: "category", "kemeja" %} {% for product in kemeja_products %}
+  {% assign category = page.category %} {% assign products = site.data.products | where: "category", category %} {% if products.size > 0 %} {% for product in
+  products %}
   <div style="border: 1px solid #ddd; padding: 1rem; width: 300px">
     <img src="{{ product.image }}" alt="{{ product.name }}" style="max-width: 100%" />
     <h2>{{ product.name }}</h2>
@@ -16,5 +17,7 @@ layout: default
     <p><strong>Sales:</strong> {{ product.sales }} sold</p>
     <a href="{{ product.link }}" target="_blank">Lihat Produk</a>
   </div>
-  {% endfor %}
+  {% endfor %} {% else %}
+  <p>Tidak ada produk di kategori ini.</p>
+  {% endif %}
 </div>
