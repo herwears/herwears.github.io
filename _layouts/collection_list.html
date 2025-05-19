@@ -3,10 +3,17 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
-<ul>
-  {% assign label = page.label %} {% for p in site.collections %} {% if p.label == label %}
-  <li>
-    <a href="{{ p.url }}">{{ p.title }}</a>
-  </li>
+<div style="display: flex; flex-wrap: wrap; gap: 1rem">
+  {% assign label = page.label %} {% for item in site.collections %} {% if item.label == label %}
+  <div style="border: 1px solid #ddd; padding: 1rem; width: 300px">
+    <img src="{{ item.image }}" alt="{{ item.name }}" style="max-width: 100%" />
+    <h2>{{ item.name }}</h2>
+    <p><strong>Code:</strong> {{ item.code }}</p>
+    <p><strong>Label:</strong> {{ item.label }}</p>
+    <p><strong>Rating:</strong> ⭐ {{ item.rating }}</p>
+    <p><strong>Price:</strong> {{ item.price }}</p>
+    <p><strong>Sales:</strong> {{ item.sales }} sold</p>
+    <a href="{{ item.link }}" target="_blank">Lihat Produk</a>
+  </div>
   {% endif %} {% endfor %}
-</ul>
+</div>
