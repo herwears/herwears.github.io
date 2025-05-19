@@ -12,7 +12,7 @@ permalink: /
 
   <p>Koleksi ID: {{ collection.id }}</p>
 
-  {% if matched_product %}
+  {% if matched_products %}
     {% include collections_list.html products=matched_products collection_id=collection.id %}
   {% else %}
     <p><em>Produk tidak ditemukan untuk koleksi ini.</em></p>
