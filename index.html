@@ -10,10 +10,10 @@ permalink: /
 {% for collection in site.data.homepage %}
   {% assign matched_products = site.data.products | where: "id", collection.id %}
 
-  <p>Koleksi ID: {{ collection.id }}</p>
-
+  
   {% if matched_products %}
-    {% include collections_list.html products=matched_products collection_id=collection.id %}
+    <p>Koleksi ID: {{ collection.id }}, {{ matched_products }}</p>
+    {% include collections_list.html products=matched_products collection_id="collection.id" %}
   {% else %}
     <p><em>Produk tidak ditemukan untuk koleksi ini.</em></p>
   {% endif %}
