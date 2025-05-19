@@ -8,7 +8,7 @@ layout: default
   {% assign category = page.category %} {% assign products = site.data.products | where: "category", category %} {% if products.size > 0 %} {% for product in
   products %}
   <div style="border: 1px solid #ddd; padding: 1rem; width: 300px">
-    <img src="{{ product.image }}" alt="{{ product.name }}" style="max-width: 100%" />
+    <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" style="max-width: 100%" />
     <h2>{{ product.name }}</h2>
     <p><strong>Code:</strong> {{ product.code }}</p>
     <p><strong>Label:</strong> {{ product.label }}</p>
