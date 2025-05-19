@@ -3,17 +3,18 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
+
 <div style="display: flex; flex-wrap: wrap; gap: 1rem">
-  {% assign label = page.label %} {% for item in site.collections %} {% if item.label == label %}
+  {% assign kemeja_products = site.data.products | where: "category", "kemeja" %} {% for product in kemeja_products %}
   <div style="border: 1px solid #ddd; padding: 1rem; width: 300px">
-    <img src="{{ item.image }}" alt="{{ item.name }}" style="max-width: 100%" />
-    <h2>{{ item.name }}</h2>
-    <p><strong>Code:</strong> {{ item.code }}</p>
-    <p><strong>Label:</strong> {{ item.label }}</p>
-    <p><strong>Rating:</strong> ⭐ {{ item.rating }}</p>
-    <p><strong>Price:</strong> {{ item.price }}</p>
-    <p><strong>Sales:</strong> {{ item.sales }} sold</p>
-    <a href="{{ item.link }}" target="_blank">Lihat Produk</a>
+    <img src="{{ product.image }}" alt="{{ product.name }}" style="max-width: 100%" />
+    <h2>{{ product.name }}</h2>
+    <p><strong>Code:</strong> {{ product.code }}</p>
+    <p><strong>Label:</strong> {{ product.label }}</p>
+    <p><strong>Rating:</strong> ⭐ {{ product.rating }}</p>
+    <p><strong>Price:</strong> {{ product.price }}</p>
+    <p><strong>Sales:</strong> {{ product.sales }} sold</p>
+    <a href="{{ product.link }}" target="_blank">Lihat Produk</a>
   </div>
-  {% endif %} {% endfor %}
+  {% endfor %}
 </div>

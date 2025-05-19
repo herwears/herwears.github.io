@@ -1,0 +1,24 @@
+[
+  {
+    "category": "kemeja",
+    "name": "Kemeja Biru",
+    "code": "KB001",
+    "image": "/src/assets/image/kemeja-biru.webp",
+    "link": "//",
+    "label": "Best Seller",
+    "rating": 4.8,
+    "price": "$59.99",
+    "sales": 1250
+  },
+  {
+    "category": "topi",
+    "name": "Topi Hitam",
+    "code": "TP001",
+    "image": "/src/assets/image/topi-hitam.webp",
+    "link": "//",
+    "label": "New Arrival",
+    "rating": 4.5,
+    "price": "$25.99",
+    "sales": 600
+  }
+]
