@@ -1,6 +1,6 @@
 ---
 layout: collection_list
 title: Koleksi Kemeja
-label: kemeja
+category: kemeja
 permalink: /collections/kemeja/
 ---

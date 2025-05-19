@@ -1,6 +1,6 @@
 ---
 layout: collection_list
 title: Koleksi Topi
-label: topi
+category: topi
 permalink: /collections/topi/
 ---
