@@ -7,7 +7,7 @@ permalink: /
 <h1>Beranda</h1>
 <p>Pilih koleksi:</p>
 
-{% for collection in site.data.collections %}
+{% for collection in site.data.homepage %}
   {% assign matched_product = site.data.products | where: "id", collection.id | first %}
   
   <p>Koleksi ID: {{ collection.id }}</p>
