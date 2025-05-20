@@ -41,17 +41,6 @@ layout: default
             <div class="font-bold text-gray-900">{{ product.price }}</div>
           </div>
         </div>
-
-        <!-- <div style="border: 1px solid #ddd; padding: 1rem; width: 300px">
-          <img src="{{ product.image | relative_url }}" alt="{{ product.name }}" style="max-width: 100%" />
-          <h2>{{ product.name }}</h2>
-          <p><strong>Code:</strong> {{ product.code }}</p>
-          <p><strong>Label:</strong> {{ product.label }}</p>
-          <p><strong>Rating:</strong> ⭐ {{ product.rating }}</p>
-          <p><strong>Price:</strong> {{ product.price }}</p>
-          <p><strong>Sales:</strong> {{ product.sales }} sold</p>
-          <a href="{{ product.link }}" target="_blank">Lihat Produk</a>
-        </div> -->
       {% endfor %}
     {% else %}
     <p>Tidak ada produk di kategori ini.</p>
