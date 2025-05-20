@@ -1,14 +1,14 @@
 <p>DEBUG: collection_id = {{ include.collection_id }}</p>
 
 <div class="sectionItem" id="{{ include.collection_id }}">
-  <h2>Produk untuk koleksi: {{ include.collection_id }}</h2>
-  <p>Produk untuk koleksi: {{ include.products }}</p>
-
-  <div class="grid grid-cols-3 gap-2">
+  <h2>{{ include.title }}</h2>
+  <div class="product-list">
     {% for product in include.products %}
-      <div class="bg-gray-200 p-4 rounded">
-        <p>{{ product.name }}</p>
-        <p>Rp {{ product.price }}</p>
+      <div class="product-card">
+        <img src="{{ product.image }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price }}</p>
+        <p>Rating: {{ product.rating }} | Sales: {{ product.sales }}</p>
       </div>
     {% endfor %}
   </div>

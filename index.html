@@ -8,12 +8,18 @@ permalink: /
 <p>Pilih koleksi:</p>
 
 {% for collection in site.data.homepage %}
-  {% assign matched_products = site.data.products | where: "id", collection.id %}
+  {% assign matched_collections = site.data.products | where: "id", collection.id %}
+  {% assign matched_collection = matched_collections[0] %}
 
-  
-  {% if matched_products %}
-    {% include collections_list.html products=matched_products collection_id=collection.id %}
+  {% if matched_collection %}
+    {% assign random_products = matched_collection.products | sample: 3 %}
+    {% include collections_list.html 
+      products=random_products 
+      title=matched_collection.title 
+      collection_id=collection.id 
+    %}
   {% else %}
-    <p><em>Produk tidak ditemukan untuk koleksi ini.</em></p>
+    <p><em>Koleksi dengan ID {{ collection.id }} tidak ditemukan.</em></p>
   {% endif %}
 {% endfor %}
+
