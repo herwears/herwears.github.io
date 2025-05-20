@@ -4,9 +4,6 @@ title: Beranda
 permalink: /
 ---
 
-<h1>Beranda</h1>
-<p>Pilih koleksi:</p>
-
 {% for collection in site.data.homepage %}
   {% assign matched_collections = site.data.products | where: "id", collection.id %}
   {% assign matched_collection = matched_collections[0] %}
