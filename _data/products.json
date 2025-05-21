@@ -109,7 +109,11 @@
         "name": "Kemeja_1",
         "code": "KMJ_002",
         "image": "/assets/images/kemeja-1.jfif",
-        "link": "//",
+        "link": {
+          "shopee": "https://shopee",
+          "tokopedia": "https://tokopedia",
+          "tiktok": "https://tiktok"
+        },
         "label": "Best Seller",
         "rating": "4.8",
         "price": "$59.99",
