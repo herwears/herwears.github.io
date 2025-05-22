@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  function uniqueLink(duration = 3000, highlightClass = 'highlight') {
+  function uniqueLink(duration = 3000, highlightClass = 'z-9') {
     const hash = window.location.hash; // contoh: #Kemeja_4a
     if (!hash) return;
 

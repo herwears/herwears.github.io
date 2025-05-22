@@ -123,7 +123,10 @@
         "name": "Kemeja_2",
         "code": "Kemeja_2a",
         "image": "/assets/images/kemeja-2.jfif",
-        "link": "//",
+        "link": {
+          "tokopedia": "https://tokopedia",
+          "tiktok": "https://tiktok"
+        },
         "label": "Top Rated",
         "rating": "4.6",
         "price": "$79.99",

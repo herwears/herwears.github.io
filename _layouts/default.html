@@ -1,5 +1,5 @@
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,9 +16,9 @@
 </head>
 
 <body class="p-2 sm:px-0 max-w-580 mx-auto">
-  <div class="has fixed bg-white h-2 z-5 top-0 max-w-[inherit] mx-auto my-0 inset-x-2 sm:inset-x-0"></div>
+  <div class="has fixed bg-white h-2 z-8 top-0 max-w-[inherit] mx-auto my-0 inset-x-2 sm:inset-x-0"></div>
   <header class="mb-5">
-    <div class="fixed border z-5 max-w-580 mx-auto p-2 rounded-xl border-solid top-2 inset-x-2 border-transparent" data-js="container-header">
+    <div class="fixed border z-8 max-w-580 mx-auto p-2 rounded-xl border-solid top-2 inset-x-2 border-transparent" data-js="container-header">
       <div class="flex justify-between" data-js="header-profile">
         <button class="inline-flex place-center w-10 h-10 rounded-lg bg-gray-900 cursor-pointer text-white" data-js="header_button--back">
           <svg class="w-5 h-5 fill-current" width="100%" height="100%">
@@ -86,7 +86,7 @@
   </footer>
 
   <style>
-      /* [ inModal ] */ .inModal{display:flex;align-items:center;position:fixed;left:0;right:0;bottom:0;margin-bottom:-100%;z-index:20;transition:var(--trans-1);height:100%;opacity:0;visibility:hidden}.inModal.--open{margin-bottom:0;opacity:1;visibility:visible}.inModal__container{width:100%;max-width:540px;max-height:calc(100% - 60px);border-radius:12px;transition:inherit;z-index:3;display:flex;overflow:hidden;position:relative;margin:0 auto;box-shadow:0 5px 30px 0 rgba(0,0,0,.05);background-color:white;outline:4px solid white;border:1px solid #e5e7eb}.inModal__overlay{display:block;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1;transition:var(--trans-1);background:transparent;opacity:0;visibility:hidden}.inModal.--open .inModal__overlay{opacity:1;visibility:visible;background-color:rgba(0,0,0,.3)}.inModal__box{width:100%;overflow:hidden}.inModal__header{display:flex;gap:15px;background:inherit;align-items:center;border-bottom:1px solid #e5e7eb;justify-content:space-between;padding:15px;background-image:radial-gradient(#e5e7eb 1px,transparent 1px),radial-gradient(#e5e7eb 1px,rgb(255 255 255) 1px);background-position:0 0,6px 6px;background-size:12px 12px}.inModal__header-title{background-color:white;font-weight:600}.inModal__header-close{width:26px;height:26px;display:flex;justify-content:center;align-items:center;border:1px solid #e5e7eb;border-radius:6px;background-color:white;font-size:13px;font-weight:bold;cursor:pointer}.inModal__header-close:hover{background-color:#f8f8fc}.inModal__content{padding:15px;overflow-y:auto;max-height:calc(100vh - 180px)}.inModal__header__close-button{padding:0 10px;display:flex;align-items:center;justify-content:flex-end;position:relative;flex-shrink:0;min-width:40px;cursor:pointer}.inModal__header__close-button::after{content:'\2715';line-height:18px;font-size:14px}.inModal__header--title::before{content:attr(data-text);color:var(--txt1);flex-grow:1;padding:16px 10px;opacity:.7}.inModal__header--title .inModal__header__close-button::before{content:attr(aria-label);font-size:11px;margin:0 8px;opacity:.6}.inModal__footer{background-color:var(--m3);padding:10px 15px;border-top:1px solid #e5e7eb;font-size:14px}@media screen and (min-width:641px){.inModal__container--sm{max-width:420px}.inModal__container--md{max-width:640px}.inModal__container--lg{max-width:720px}.inModal__container--xl{max-width:840px}}@media screen and (max-width:640px){.inModal{align-items:flex-end}.inModal__container{border-radius:12px 12px 0 0}}
+      /* [ inModal ] */ .inModal{display:flex;align-items:center;position:fixed;left:0;right:0;bottom:0;margin-bottom:-100%;z-index:20;transition:var(--trans-1);height:100%;opacity:0;visibility:hidden}.inModal.--open{margin-bottom:0;opacity:1;visibility:visible}.inModal__container{width:calc(100% - 8px);max-width:580px;max-height:calc(100% - 60px);border-radius:12px;transition:inherit;z-index:3;display:flex;overflow:hidden;position:relative;margin:0 auto;box-shadow:0 5px 30px 0 rgba(0,0,0,.05);background-color:white;outline:4px solid white;border:1px solid #e5e7eb}.inModal__overlay{display:block;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1;transition:var(--trans-1);background:transparent;opacity:0;visibility:hidden}.inModal.--open .inModal__overlay{opacity:1;visibility:visible;background-color:rgba(0,0,0,.3)}.inModal__box{width:100%;overflow:hidden}.inModal__header{display:flex;gap:15px;background:inherit;align-items:center;border-bottom:1px solid #e5e7eb;justify-content:space-between;padding:15px;background-image:radial-gradient(#e5e7eb 1px,transparent 1px),radial-gradient(#e5e7eb 1px,rgb(255 255 255) 1px);background-position:0 0,6px 6px;background-size:12px 12px}.inModal__header-title{font-weight:600}.inModal__header-close{width:26px;height:26px;display:flex;justify-content:center;align-items:center;border:1px solid #e5e7eb;border-radius:6px;background-color:white;font-size:13px;font-weight:bold;cursor:pointer}.inModal__header-close:hover{background-color:#f8f8fc}.inModal__content{padding:15px;overflow-y:auto;max-height:calc(100vh - 180px)}.inModal__header__close-button{padding:0 10px;display:flex;align-items:center;justify-content:flex-end;position:relative;flex-shrink:0;min-width:40px;cursor:pointer}.inModal__header__close-button::after{content:'\2715';line-height:18px;font-size:14px}.inModal__header--title::before{content:attr(data-text);color:var(--txt1);flex-grow:1;padding:16px 10px;opacity:.7}.inModal__header--title .inModal__header__close-button::before{content:attr(aria-label);font-size:11px;margin:0 8px;opacity:.6}.inModal__footer{background-color:var(--m3);padding:10px 15px;border-top:1px solid #e5e7eb;font-size:14px}
 
       #inModal--product:checked ~ .inModal.--product{margin-bottom:0;opacity:1;visibility:visible}
       #inModal--product:checked ~ .inModal.--product .inModal__overlay{opacity:1;visibility:visible;background-color:rgba(0,0,0,.3)}
@@ -100,7 +100,7 @@
             <div class="inModal__header-title">Temukan Produk Ini di Platform Favoritmu</div>
             <label class="inModal__header-close" for="inModal--product">✕</label>
           </div>
-          <div class="inModal__content"></div>
+          <div class="inModal__content space-y-3"></div>
           <div class="inModal__footer">
             <div class="text-center">
               <p class="text-sm text-gray-500 mb-2">Bagikan produk ini:</p>
@@ -115,7 +115,7 @@
     </div>
   </div>
   <style>
-    .backdrop {background-color:rgba(0,0,0,.6);z-index:5;opacity:0;visibility:hidden;transition:all .2s ease;position:fixed;top:0;right:0;bottom:0;left:0;}.has-unique-link .backdrop {opacity:1;visibility:visible;}.highlight{z-index: 6;}
+    .backdrop {background-color:rgba(0,0,0,.6);z-index:8;opacity:0;visibility:hidden;transition:all .2s ease;position:fixed;top:0;right:0;bottom:0;left:0;}.has-unique-link .backdrop {opacity:1;visibility:visible;}
   </style>
   <div class="backdrop"></div>
   <svg class="hidden">
@@ -130,6 +130,22 @@
         transform="translate(-46 -46.001)"
       ></path>
     </symbol>
+
+    <symbol id="i.search" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" x2="16.65" y1="21" y2="16.65" />
+      </symbol>
+      <symbol id="i.close" viewBox="0 0 24 24">
+        <path
+          d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+        ></path>
+      </symbol>
+
     <symbol id="i.check">
       <path
         d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"
@@ -185,6 +201,7 @@
         d="M15.67,23a1.57,1.57,0,0,1-1.22-.58L6.86,13a1.56,1.56,0,0,1,0-2l7.86-9.43a1.57,1.57,0,1,1,2.42,2l-7,8.42,6.79,8.42A1.57,1.57,0,0,1,15.67,23Z"
       ></path>
     </symbol>
+
   </svg>
 
   <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
