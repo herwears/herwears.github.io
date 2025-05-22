@@ -83,5 +83,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  uniqueLink()
+  uniqueLink();
+
+
+
+
+
+
+  // HEADER
+  const ELEMENT_CONTAINER_BACKGROUND = document.querySelector("[data-js='container-background']");
+  const ELEMENT_CONTAINER_HEADER = document.querySelector("[data-js='container-header']");
+  
+  const ELEMENT_PROFIL_FIRST_BUTTON__BACK = document.querySelector("[data-js='header_button--back']");
+  const ELEMENT_PROFIL_FIRST_BUTTON__PROFILE = document.querySelector("[data-js='header_button--profile']");
+  const ELEMENT_PROFIL_FIRST_BUTTON__SEARCH = document.querySelector("[data-js='header_button--search']");
+  
+  const ELEMENT_CONTAINER_HEADER_PROFIL = document.querySelector("[data-js='header-profile']");
+  const ELEMENT_CONTAINER_HEADER_SEARCH = document.querySelector("[data-js='header-search']");
+
+  const isElementBottomTouching = () => ELEMENT_CONTAINER_BACKGROUND.getBoundingClientRect().bottom >= ELEMENT_CONTAINER_HEADER.getBoundingClientRect().bottom;
+  const updateHeaderState = (isActive) => {
+    ELEMENT_CONTAINER_HEADER.classList.toggle("border-transparent", !isActive);
+    ELEMENT_CONTAINER_HEADER.classList.toggle("bg-white/80", isActive);
+    ELEMENT_CONTAINER_HEADER.classList.toggle("border-gray-200", isActive);
+    ELEMENT_CONTAINER_HEADER.classList.toggle("backdrop-blur-xs", isActive);
+    ELEMENT_PROFIL_FIRST_BUTTON__PROFILE.classList.toggle("hidden", !isActive);
+  };
+  const updateFromScroll = () => {
+    if (!ELEMENT_CONTAINER_HEADER_SEARCH.classList.contains("hidden")) return;
+    updateHeaderState(!isElementBottomTouching());
+  };
+
+  ELEMENT_PROFIL_FIRST_BUTTON__SEARCH.addEventListener("click", () => {
+    ELEMENT_CONTAINER_HEADER_PROFIL.classList.add("hidden");
+    ELEMENT_CONTAINER_HEADER_SEARCH.classList.remove("hidden");
+    updateHeaderState(true);
+  });
+
+  document.querySelector("[data-js='header_search--button']").addEventListener("click", () => {
+    ELEMENT_CONTAINER_HEADER_PROFIL.classList.remove("hidden");
+    ELEMENT_CONTAINER_HEADER_SEARCH.classList.add("hidden");
+    updateHeaderState(!isElementBottomTouching());
+  });
+  // ELEMENT_PROFIL_SECOND_FORM__CLEAR.addEventListener("click", () => {
+  //   ELEMENT_PROFIL_SECOND_FORM__INPUT.value = "";
+  //   ELEMENT_PROFIL_SECOND_FORM__CLEAR.classList.add("hidden");
+  //   ELEMENT_PROFIL_SECOND_FORM__INPUT.focus(); // Optional: fokus lagi ke input setelah clear
+  // });
+  // ELEMENT_PROFIL_SECOND_FORM__INPUT.addEventListener("input", () => {
+  //   ELEMENT_PROFIL_SECOND_FORM__CLEAR.classList.toggle("hidden", !ELEMENT_PROFIL_SECOND_FORM__INPUT.value.trim());
+  // });
+  // ELEMENT_PROFIL_SECOND_FORM.addEventListener("submit", function (e) {
+  //   e.preventDefault(); // hindari submit default
+  //   const keyword = ELEMENT_PROFIL_SECOND_FORM__INPUT.value.trim().replace(/\s+/g, "-");
+  //   if (keyword) {
+  //     // Ubah URL jadi seperti: ?search/keyword
+  //     window.location.href = `?search/${keyword}`;
+  //   }
+  // });
+  updateFromScroll();
+  window.addEventListener("scroll", updateFromScroll);
 });
