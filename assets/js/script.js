@@ -114,6 +114,12 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeaderState(!isElementBottomTouching());
   };
 
+  if (ELEMENT_PROFIL_FIRST_BUTTON__BACK) {
+    ELEMENT_PROFIL_FIRST_BUTTON__BACK.addEventListener("click", () => {
+      history.length > 1 && document.referrer.startsWith(location.origin) ? history.back() : (location.href = "/");
+    });
+  }
+  
   ELEMENT_PROFIL_FIRST_BUTTON__SEARCH.addEventListener("click", () => {
     ELEMENT_CONTAINER_HEADER_PROFIL.classList.add("hidden");
     ELEMENT_CONTAINER_HEADER_SEARCH.classList.remove("hidden");
