@@ -27,22 +27,11 @@
           </svg>
         </button>
         <div class="hidden" data-js="header_button--profile"><img class="w-10 h-10 rounded-full" src="{{ site.logo }}"/></div>
-        <button class="inline-flex place-center w-10 h-10 rounded-lg bg-gray-900 cursor-pointer text-white" data-js="header_button--search">
+        <a class="inline-flex place-center w-10 h-10 rounded-lg bg-gray-900 cursor-pointer text-white" href="/search">
           <svg class="w-5 h-5 fill-current" width="100%" height="100%">
             <use xlink:href="#i.search"></use>
           </svg>
-        </button>
-      </div>
-      <div class="hidden flex place-center" data-js="header-search">
-        <form class="flex flex-1 items-center gap-[15px] border bg-white h-10 px-2.5 py-0 my-0 rounded-lg border-solid mr-3">
-          <input class="w-full h-full text-sm bg-transparent p-0 border-0 focus:outline-none" placeholder="Cari produk.." />
-          <button class="hidden text-xs cursor-pointer" type="button">Clear</button>
-        </form>
-        <button class="inline-flex place-center w-10 h-10 rounded-lg bg-gray-900 cursor-pointer text-white" data-js="header_search--button">
-          <svg class="w-5 h-5 fill-current" width="100%" height="100%">
-            <use xlink:href="#i.close"></use>
-          </svg>
-        </button>
+        </a>
       </div>
     </div>
     <div class="w-full h-44 bg-gray-300 p-2 rounded-xl text-center flex flex-col items-center justify-end gap-y-1.5" data-js="container-background">
@@ -57,6 +46,7 @@
         <p class="text-sm md:text-base text-gray-600">Temukan produk terpopuler pilihan kami.</p>
       {% endif %}
     </div>
+    <div id="global-results" style="position: absolute; background: white; border: 1px solid #ddd;"></div>
   </header>
 
   <main class="mb-5">{{ content }}</main>
@@ -117,7 +107,7 @@
       <div class="w-[calc(100%_-_8px)] max-w-md transition-[inherit] z-[3] relative bg-[white] overflow-hidden mx-auto my-0 p-1 rounded-xl">
         <div class="flex w-full overflow-hidden flex-col gap-4">
           <div class="relative">
-            <div class="bg-gray-800 flex items-center justify-center aspect-square overflow-hidden rounded-lg" style="aspect-ratio:3/2;">
+            <div class="bg-gray-800 flex place-center aspect-square overflow-hidden rounded-lg" style="aspect-ratio:3/2;">
               <img data-js="modal:product__header-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="{{ site.title }}" class="object-cover opacity-80">
               <div class="font-semibold text-sm text-center absolute bg-white m-1.5 p-2 gap-x-8 rounded-md bottom-0 inset-x-0 shadow-md flex items-center justify-between">
                 <h6 class="font-semibold text-base leading-7 text-black truncate" data-js="modal:product__header-title"></h6>
@@ -130,10 +120,10 @@
                 </div>
               </div>
             </div>
-            <button class="inModal__header-close absolute left-1.5 top-1.5">
+            <button class="w-7 h-7 flex place-center border bg-white font-semibold cursor-pointer rounded-md border-solid absolute left-1.5 top-1.5">
               <svg class="w-3.5 h-3.5" width="100%" height="100%"><use xlink:href="#i.bookmark"></use></svg>
             </button>
-            <label class="inModal__header-close absolute right-1.5 top-1.5" for="inModal--product">✕</label>
+            <label class="w-7 h-7 flex place-center border bg-white font-semibold cursor-pointer rounded-md border-solid absolute right-1.5 top-1.5" for="inModal--product">✕</label>
           </div>
           <div class="grid grid-cols-1 gap-1.5 px-1.5" data-js="modal:product__content"></div>
           <div class="inModal__footer">
@@ -261,6 +251,45 @@
     <symbol id='i.share' viewBox='0 0 24 24'><path d='M8.53,4.62A3.47,3.47,0,1,0,12,1.14,3.47,3.47,0,0,0,8.53,4.62ZM1,18.51A3.48,3.48,0,1,0,4.47,15,3.48,3.48,0,0,0,1,18.51ZM19.53,22A3.48,3.48,0,1,1,23,18.51,3.48,3.48,0,0,1,19.53,22ZM6.45,6.43A.87.87,0,0,0,6.52,5.2.86.86,0,0,0,5.3,5.13a10.1,10.1,0,0,0-3.43,7.59.87.87,0,0,0,1.74,0A8.35,8.35,0,0,1,6.45,6.43ZM18.7,5.13a.86.86,0,0,0-1.22.07.87.87,0,0,0,.07,1.23,8.35,8.35,0,0,1,2.84,6.29.87.87,0,1,0,1.74,0A10.1,10.1,0,0,0,18.7,5.13ZM9.9,20.85a.87.87,0,0,0-.43,1.69,10.16,10.16,0,0,0,5.06,0,.87.87,0,1,0-.43-1.69,8.3,8.3,0,0,1-4.2,0Z'></path></symbol>
 
   </svg>
+
+  <script>
+    let searchData = [];
+
+  fetch('/products.json')  // Atau search.json jika mencakup semuanya
+    .then(res => res.json())
+    .then(json => searchData = json);
+
+  document.getElementById('global-search').addEventListener('input', function (e) {
+    const keyword = e.target.value.toLowerCase();
+    const resultsEl = document.getElementById('global-results');
+    resultsEl.innerHTML = '';
+
+    if (keyword.length < 2) return;
+
+    const filtered = searchData.filter(item =>
+      (item.title && item.title.toLowerCase().includes(keyword)) ||
+      (item.code && item.code.toLowerCase().includes(keyword)) ||
+      (item.label && item.label.toLowerCase().includes(keyword))
+    );
+
+    if (filtered.length === 0) {
+      resultsEl.innerHTML = '<p style="padding: 8px;">Tidak ada hasil.</p>';
+      return;
+    }
+
+    filtered.forEach(item => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <a href="${item.url || '#'}" style="display: block; padding: 8px; border-bottom: 1px solid #eee;">
+          <strong>${item.title}</strong><br/>
+          ${item.price ? '<small>' + item.price + '</small><br/>' : ''}
+        </a>
+      `;
+      resultsEl.appendChild(div);
+    });
+  });
+
+  </script>
 
   <script>
     const title = "{{ site.title | escape_js }}";

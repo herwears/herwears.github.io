@@ -1,0 +1,109 @@
+---
+layout: default
+title: Search Produk
+permalink: /search/
+---
+
+<div class="flex items-center px-2 border border-slate-200 rounded-xl focus-within:border-slate-400 hover:border-slate-300 mb-5">
+  <svg class="h-4 w-4 mr-2" width="100%" height="100%"><use xlink:href="#i.fire"></use></svg>
+  <input
+    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm px-1 py-2 transition duration-300 ease focus:outline-none"
+    placeholder="Search in Featured Products gegegegeg" id="search-input"
+  />
+</div>
+<div id="results"></div>
+
+<script>
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  const keywordFromURL = getQueryParam('keyword')?.toLowerCase() || '';
+  document.getElementById('search-input').value = keywordFromURL;
+
+  const products = [
+    {% for collection in site.data.products %}
+      {% for product in collection.products %}
+        {
+          name: {{ product.name | jsonify }},
+          code: {{ product.code | jsonify }},
+          label: {{ product.label | jsonify }},
+          image: {{ product.image | jsonify }},
+          price: {{ product.price | jsonify }},
+          collection: {{ collection.title | jsonify }},
+          link: {{ product.link | jsonify }}
+        }{% unless forloop.last and forloop.parentloop.last %},{% endunless %}
+      {% endfor %}
+    {% endfor %}
+  ];
+
+  function renderGroupedResults(keyword) {
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+
+    if (keyword.length < 2) {
+      results.innerHTML = '<p>Masukkan minimal 2 karakter.</p>';
+      return;
+    }
+
+    // Filter berdasarkan keyword
+    const filtered = products.filter(p =>
+      p.name.toLowerCase().includes(keyword) ||
+      p.code.toLowerCase().includes(keyword) ||
+      p.label.toLowerCase().includes(keyword) ||
+      p.collection.toLowerCase().includes(keyword)
+    );
+
+    if (filtered.length === 0) {
+      results.innerHTML = '<p>Tidak ada hasil ditemukan.</p>';
+      return;
+    }
+
+    // Kelompokkan hasil berdasarkan collection
+    const grouped = {};
+    filtered.forEach(p => {
+      if (!grouped[p.collection]) grouped[p.collection] = [];
+      grouped[p.collection].push(p);
+    });
+
+    // Tampilkan hasil per koleksi
+    for (const collectionName in grouped) {
+      const section = document.createElement('div');
+      section.innerHTML = `<h2>📦 ${collectionName}</h2>`;
+      grouped[collectionName].forEach(p => {
+        const item = document.createElement('div');
+        item.innerHTML = `
+          <strong>${p.name}</strong><br>
+          <img src="${p.image}" style="max-width: 100px;"><br>
+          <small>Kode: ${p.code} | Label: ${p.label}</small><br>
+          <strong>Harga: ${p.price}</strong><br>
+          ${generateLinks(p.link)}
+          <hr>
+        `;
+        section.appendChild(item);
+      });
+      results.appendChild(section);
+    }
+  }
+
+  function generateLinks(link) {
+    if (typeof link === 'string') {
+      return `<a href="${link}" target="_blank">Link Produk</a>`;
+    } else if (typeof link === 'object') {
+      return Object.entries(link).map(([key, url]) => `<a href="${url}" target="_blank">${key}</a>`).join(' | ');
+    }
+    return '';
+  }
+
+  // Trigger pencarian saat halaman load
+  if (keywordFromURL) renderGroupedResults(keywordFromURL);
+
+  // Trigger saat input diketik
+  document.getElementById('search-input').addEventListener('input', function (e) {
+    const keyword = e.target.value.toLowerCase();
+    history.replaceState(null, '', `?keyword=${encodeURIComponent(keyword)}`);
+    renderGroupedResults(keyword);
+  });
+</script>
+
