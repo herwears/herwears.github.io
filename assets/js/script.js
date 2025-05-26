@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       $("modal:product__content").innerHTML = generateProductModalHTML(content.link);
       
-      $("modal:product__footer-link").setAttribute('onclick', `navigator.clipboard.writeText('${urlLink}#${id}')`);
+      $("modal:product__footer-link").setAttribute('onclick', `navigator.clipboard.writeText('${urlLink}#${content.id}')`);
       // document.querySelector(".inModal.--product .inModal__header").innerHTML
       // document.querySelector(".inModal.--product .inModal__content").innerHTML = generateProductModalHTML(link);
       // document.querySelector(".inModal.--product .inModal__footer").innerHTML = `<div class="text-center">
