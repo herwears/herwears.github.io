@@ -1,0 +1,19 @@
+{
+  "messages": {
+    "modal_shareProduct": "Share link",
+    "modal_copyLink": "Copy link",
+    "quantitySold": "Terjual [NUMBER]"
+  },
+  "modalProduct": {
+    "messages": {
+      "seeAt": "Lihat di [TITLE]",
+      "notAvailable": "Belum tersedia di [TITLE]"
+    },
+    "list": {
+      "tiktok": { "name": "TikTok", "color": "bg-black hover:bg-gray-800" },
+      "shopee": { "name": "Shopee", "color": "bg-orange-500 hover:bg-orange-600" },
+      "tokopedia": { "name": "Tokopedia", "color": "bg-green-500 hover:bg-green-600" }
+    }
+
+  }
+}

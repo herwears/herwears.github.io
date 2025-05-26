@@ -10,11 +10,7 @@ permalink: /
 
   {% if matched_collection %}
     {% assign random_products = matched_collection.products | sample: 3 %}
-    {% include collections_list.html 
-      products=random_products 
-      title=matched_collection.title 
-      collection_id=collection.id 
-    %}
+    {% include collections_list.html products=random_products title=matched_collection.title collection_id=collection.id %}
   {% else %}
     <p><em>Koleksi dengan ID {{ collection.id }} tidak ditemukan.</em></p>
   {% endif %}

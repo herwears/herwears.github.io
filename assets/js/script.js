@@ -1,55 +1,47 @@
+const $ = (key) => document.querySelector(`[data-js="${key}"]`);
+
+console.log({title});
+console.log({ setting });
+
 document.addEventListener("DOMContentLoaded", function () {
   const urlLink = window.location.origin + window.location.pathname;
 
   function generateProductModalHTML(productLinks) {
-    console.log({productLinks})
-    const platforms = {
-      tiktok: { name: "TikTok", color: "bg-black hover:bg-gray-800" },
-      shopee: { name: "Shopee", color: "bg-orange-500 hover:bg-orange-600" },
-      tokopedia: { name: "Tokopedia", color: "bg-green-500 hover:bg-green-600" },
-    };
-
-    let platformButtons = "";
-
-    for (const key in platforms) {
-      const { name, color } = platforms[key];
-      const link = productLinks[key];
-
-      if (link) {
-        platformButtons += `
-        <a href="${link}" target="_blank"
-           class="block w-full text-center text-white py-2 rounded-lg transition ${color}">
-          Lihat di ${name}
-        </a>
-      `;
-      } else {
-        platformButtons += `
-        <button disabled
-                class="block w-full text-center bg-gray-300 text-gray-500 py-2 rounded-lg cursor-not-allowed">
-          Belum tersedia di ${name}
-        </button>
-      `;
-      }
-    }
-    return platformButtons
+    const m = setting.modalProduct.messages;
+    return Object.entries(setting.modalProduct.list).map(([k, { name, color }]) => `
+    <a href="${productLinks[k] || '#'}" ${productLinks[k] ? 'target="_blank"' : 'onclick="return false"'} 
+       class="block w-full text-center py-2 rounded-lg ${productLinks[k] ? `text-white transition ${color}` : 'bg-gray-300 text-gray-500 cursor-not-allowed'}">
+      ${(productLinks[k] ? m.seeAt : m.notAvailable).replace('[TITLE]', name)}
+    </a>
+  `).join('');
   }
 
   document.querySelectorAll("[data-js='product:modal']").forEach(item => {
-    const link = JSON.parse(item.dataset.link);
-    const id = item.dataset.id;
+    const content = JSON.parse(item.dataset.content);
 
     item.addEventListener("click", function (event) {
+      console.log({ content })
       
       const checkbox = document.getElementById("inModal--product");
       checkbox.checked = !checkbox.checked;
+
+      $("modal:product__header-image").src = content.image;
+      $("modal:product__header-image").alt = content.name;
+      $("modal:product__header-title").textContent = content.name;
+      $("modal:product__header-sales").textContent = setting.messages.quantitySold.replace("[NUMBER]", String(content.sales));
+      $("modal:product__header-rating").textContent = content.rating;
       
-      document.querySelector(".inModal.--product .inModal__content").innerHTML = generateProductModalHTML(link);
-      document.querySelector(".inModal.--product .inModal__footer").innerHTML = `<div class="text-center">
-        <p class="text-sm text-gray-500 mb-2">Bagikan produk ini:</p>
-        <div class="flex justify-center gap-4">
-          <button class="text-blue-500 hover:text-blue-700" onclick="navigator.clipboard.writeText('${urlLink}#${id}')">Salin Link</button>
-        </div>
-      </div>`;
+      $("modal:product__content").innerHTML = generateProductModalHTML(content.link);
+      
+      $("modal:product__footer-link").setAttribute('onclick', `navigator.clipboard.writeText('${urlLink}#${id}')`);
+      // document.querySelector(".inModal.--product .inModal__header").innerHTML
+      // document.querySelector(".inModal.--product .inModal__content").innerHTML = generateProductModalHTML(link);
+      // document.querySelector(".inModal.--product .inModal__footer").innerHTML = `<div class="text-center">
+      //   <p class="text-sm text-gray-500 mb-2">Bagikan produk ini:</p>
+      //   <div class="flex justify-center gap-4">
+      //     <button class="text-blue-500 hover:text-blue-700" onclick="navigator.clipboard.writeText('${urlLink}#${id}')">Salin Link</button>
+      //   </div>
+      // </div>`;
 
       event.preventDefault();
     });

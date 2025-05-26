@@ -114,43 +114,33 @@
 
     <!--  -->
     <div class="inModal --product">
-      <div class="w-[calc(100%_-_8px)] max-w-[580px] max-h-[calc(100%_-_60px)] transition-[inherit] z-[3] relative bg-[white] overflow-hidden mx-auto my-0 p-1 rounded-xl inModal__container--md">
+      <div class="w-[calc(100%_-_8px)] max-w-md transition-[inherit] z-[3] relative bg-[white] overflow-hidden mx-auto my-0 p-1 rounded-xl">
         <div class="flex w-full overflow-hidden flex-col gap-4">
           <div class="relative">
             <div class="bg-gray-800 flex items-center justify-center aspect-video overflow-hidden rounded-lg">
-              <img src="/assets/images/1.webp" alt="Tour Preview" class="object-cover opacity-80">
-              <div class="font-semibold text-sm text-center absolute bg-white m-1.5 p-2 rounded-md bottom-0 inset-x-0 shadow-md flex items-center justify-between">
-                <h6 class="font-semibold text-base leading-7 text-black ">Trendy Jacket</h6>
+              <img data-js="modal:product__header-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="{{ site.title }}" class="object-cover opacity-80">
+              <div class="font-semibold text-sm text-center absolute bg-white m-1.5 p-2 gap-x-8 rounded-md bottom-0 inset-x-0 shadow-md flex items-center justify-between">
+                <h6 class="font-semibold text-base leading-7 text-black truncate" data-js="modal:product__header-title"></h6>
                 <div class="flex items-center space-x-2 text-xs">
-                  <span class="font-semibold text-gray-800">2.4K</span>
+                  <span class="font-semibold text-gray-800" data-js="modal:product__header-sales"></span>
                   <div class="flex items-center space-x-1 bg-yellow-400 text-white px-2 py-1 rounded-full ml-2">
-                    <!-- Ikon bintang SVG -->
-                    <svg class="w-3.5 h-3.5" width="100%" height="100%"><use xlink:href="#i.rating"></use></svg>
-                    <span>4.8</span>
+                    <svg class="w-3.5 h-3.5 text-white" width="100%" height="100%"><use xlink:href="#i.rating"></use></svg>
+                    <span data-js="modal:product__header-rating"></span>
                   </div>
                 </div>
               </div>
             </div>
+            <button class="inModal__header-close absolute left-1.5 top-1.5">
+              <svg class="w-3.5 h-3.5" width="100%" height="100%"><use xlink:href="#i.bookmark"></use></svg>
+            </button>
             <label class="inModal__header-close absolute right-1.5 top-1.5" for="inModal--product">✕</label>
           </div>
-          <div class="grid grid-cols-1 gap-1.5 md:grid-cols-3">
-            <button disabled="" class="block w-full text-center bg-gray-300 text-gray-500 py-2 rounded-lg cursor-not-allowed">
-              Belum tersedia di TikTok
-            </button>
-          
-            <button disabled="" class="block w-full text-center text-white py-2 rounded-lg transition bg-orange-500 hover:bg-orange-600">
-              Belum tersedia di Shopee
-            </button>
-          
-            <button disabled="" class="block w-full text-center bg-gray-300 text-gray-500 py-2 rounded-lg cursor-not-allowed">
-              Belum tersedia di Tokopedia
-            </button>
-          </div>
+          <div class="grid grid-cols-1 gap-1.5 px-1.5" data-js="modal:product__content"></div>
           <div class="inModal__footer">
             <div class="text-center">
-              <p class="text-sm text-gray-500 mb-2">Bagikan produk ini:</p>
+              <p class="text-sm text-gray-500 mb-2">{{ site.data.setting.messages.modal_shareProduct }}</p>
               <div class="flex justify-center gap-4">
-                <button class="text-blue-500 hover:text-blue-700" onclick="navigator.clipboard.writeText('http://127.0.0.1:4000/collections/kemeja/#COX001')">Salin Link</button>
+                <button class="text-blue-500 hover:text-blue-700" data-js="modal:product__footer-link">{{ site.data.setting.messages.modal_copyLink }}</button>
               </div>
             </div>
           </div>
@@ -252,7 +242,7 @@
     <symbol id="i.rating" viewBox="0 0 24 24">
       <path
         d="M12,3C10,3,9.8,6.5,8.6,7.8s-5-.2-5.5,2,2.8,3,3.2,4.9-1.6,4.6.2,6S10.1,19,12,19s3.8,3,5.5,1.7-.3-4.1.2-6,3.8-2.6,3.2-4.9-4.2-.7-5.5-2S14,3,12,3Z"
-        fill="#f8b704"
+        fill="currentColor"
       ></path>
     </symbol>
     <symbol id="i.bookmark" viewBox="0 0 24 24">
@@ -272,5 +262,9 @@
 
   </svg>
 
+  <script>
+    const title = "{{ site.title | escape_js }}";
+    const setting = {{ site.data.setting | jsonify }};
+  </script>
   <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
