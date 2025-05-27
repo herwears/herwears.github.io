@@ -253,45 +253,6 @@
   </svg>
 
   <script>
-    let searchData = [];
-
-  fetch('/products.json')  // Atau search.json jika mencakup semuanya
-    .then(res => res.json())
-    .then(json => searchData = json);
-
-  document.getElementById('global-search').addEventListener('input', function (e) {
-    const keyword = e.target.value.toLowerCase();
-    const resultsEl = document.getElementById('global-results');
-    resultsEl.innerHTML = '';
-
-    if (keyword.length < 2) return;
-
-    const filtered = searchData.filter(item =>
-      (item.title && item.title.toLowerCase().includes(keyword)) ||
-      (item.code && item.code.toLowerCase().includes(keyword)) ||
-      (item.label && item.label.toLowerCase().includes(keyword))
-    );
-
-    if (filtered.length === 0) {
-      resultsEl.innerHTML = '<p style="padding: 8px;">Tidak ada hasil.</p>';
-      return;
-    }
-
-    filtered.forEach(item => {
-      const div = document.createElement('div');
-      div.innerHTML = `
-        <a href="${item.url || '#'}" style="display: block; padding: 8px; border-bottom: 1px solid #eee;">
-          <strong>${item.title}</strong><br/>
-          ${item.price ? '<small>' + item.price + '</small><br/>' : ''}
-        </a>
-      `;
-      resultsEl.appendChild(div);
-    });
-  });
-
-  </script>
-
-  <script>
     const title = "{{ site.title | escape_js }}";
     const setting = {{ site.data.setting | jsonify }};
   </script>

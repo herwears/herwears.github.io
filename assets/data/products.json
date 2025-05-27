@@ -1,0 +1,31 @@
+---
+layout: null
+permalink: /products.json
+---
+
+[
+  {% for collection in site.data.products %}
+    {
+      "title": {{ collection.title | jsonify }},
+      "description": {{ collection.description | jsonify }},
+      "id": {{ collection.id | jsonify }},
+      "type": {{ collection.type | jsonify }},
+      "textSum": "{{ collection.products | size }} Products",
+      "products": [
+        {% for product in collection.products %}
+          {
+            "name": {{ product.name | jsonify }},
+            "code": {{ product.code | jsonify }},
+            "image": {{ product.image | jsonify }},
+            "link": {{ product.link | jsonify }},
+            "label": {{ product.label | jsonify }},
+            "rating": {{ product.rating | jsonify }},
+            "price": {{ product.price | jsonify }},
+            "sales": {{ product.sales | jsonify }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+

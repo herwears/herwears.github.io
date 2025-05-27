@@ -16,12 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
   `).join('');
   }
 
-  document.querySelectorAll("[data-js='product:modal']").forEach(item => {
-    const content = JSON.parse(item.dataset.content);
+  document.body.addEventListener("click", function (event) {
+    const item = event.target.closest("[data-js='product:modal']");
+    if (item) {
+      const content = JSON.parse(item.dataset.content);
+      // lakukan sesuatu dengan `content`
+      console.log(content);
 
-    item.addEventListener("click", function (event) {
-      console.log({ content })
-      
       const checkbox = document.getElementById("inModal--product");
       checkbox.checked = !checkbox.checked;
 
@@ -30,21 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
       $("modal:product__header-title").textContent = content.name;
       $("modal:product__header-sales").textContent = setting.messages.quantitySold.replace("[NUMBER]", String(content.sales));
       $("modal:product__header-rating").textContent = content.rating;
-      
+
       $("modal:product__content").innerHTML = generateProductModalHTML(content.link);
-      
+
       $("modal:product__footer-link").setAttribute('onclick', `navigator.clipboard.writeText('${urlLink}#${content.code}')`);
-      // document.querySelector(".inModal.--product .inModal__header").innerHTML
-      // document.querySelector(".inModal.--product .inModal__content").innerHTML = generateProductModalHTML(link);
-      // document.querySelector(".inModal.--product .inModal__footer").innerHTML = `<div class="text-center">
-      //   <p class="text-sm text-gray-500 mb-2">Bagikan produk ini:</p>
-      //   <div class="flex justify-center gap-4">
-      //     <button class="text-blue-500 hover:text-blue-700" onclick="navigator.clipboard.writeText('${urlLink}#${id}')">Salin Link</button>
-      //   </div>
-      // </div>`;
 
       event.preventDefault();
-    });
+    }
   });
 
   function uniqueLink(duration = 3000, highlightClass = 'z-9') {
@@ -88,10 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
   const ELEMENT_PROFIL_FIRST_BUTTON__BACK = document.querySelector("[data-js='header_button--back']");
   const ELEMENT_PROFIL_FIRST_BUTTON__PROFILE = document.querySelector("[data-js='header_button--profile']");
-  const ELEMENT_PROFIL_FIRST_BUTTON__SEARCH = document.querySelector("[data-js='header_button--search']");
-  
-  const ELEMENT_CONTAINER_HEADER_PROFIL = document.querySelector("[data-js='header-profile']");
-  const ELEMENT_CONTAINER_HEADER_SEARCH = document.querySelector("[data-js='header-search']");
 
   const isElementBottomTouching = () => ELEMENT_CONTAINER_BACKGROUND.getBoundingClientRect().bottom >= ELEMENT_CONTAINER_HEADER.getBoundingClientRect().bottom;
   const updateHeaderState = (isActive) => {
@@ -102,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ELEMENT_PROFIL_FIRST_BUTTON__PROFILE.classList.toggle("hidden", !isActive);
   };
   const updateFromScroll = () => {
-    if (!ELEMENT_CONTAINER_HEADER_SEARCH.classList.contains("hidden")) return;
     updateHeaderState(!isElementBottomTouching());
   };
 
@@ -111,34 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
       history.length > 1 && document.referrer.startsWith(location.origin) ? history.back() : (location.href = "/");
     });
   }
-  
-  ELEMENT_PROFIL_FIRST_BUTTON__SEARCH.addEventListener("click", () => {
-    ELEMENT_CONTAINER_HEADER_PROFIL.classList.add("hidden");
-    ELEMENT_CONTAINER_HEADER_SEARCH.classList.remove("hidden");
-    updateHeaderState(true);
-  });
 
-  document.querySelector("[data-js='header_search--button']").addEventListener("click", () => {
-    ELEMENT_CONTAINER_HEADER_PROFIL.classList.remove("hidden");
-    ELEMENT_CONTAINER_HEADER_SEARCH.classList.add("hidden");
-    updateHeaderState(!isElementBottomTouching());
-  });
-  // ELEMENT_PROFIL_SECOND_FORM__CLEAR.addEventListener("click", () => {
-  //   ELEMENT_PROFIL_SECOND_FORM__INPUT.value = "";
-  //   ELEMENT_PROFIL_SECOND_FORM__CLEAR.classList.add("hidden");
-  //   ELEMENT_PROFIL_SECOND_FORM__INPUT.focus(); // Optional: fokus lagi ke input setelah clear
-  // });
-  // ELEMENT_PROFIL_SECOND_FORM__INPUT.addEventListener("input", () => {
-  //   ELEMENT_PROFIL_SECOND_FORM__CLEAR.classList.toggle("hidden", !ELEMENT_PROFIL_SECOND_FORM__INPUT.value.trim());
-  // });
-  // ELEMENT_PROFIL_SECOND_FORM.addEventListener("submit", function (e) {
-  //   e.preventDefault(); // hindari submit default
-  //   const keyword = ELEMENT_PROFIL_SECOND_FORM__INPUT.value.trim().replace(/\s+/g, "-");
-  //   if (keyword) {
-  //     // Ubah URL jadi seperti: ?search/keyword
-  //     window.location.href = `?search/${keyword}`;
-  //   }
-  // });
   updateFromScroll();
   window.addEventListener("scroll", updateFromScroll);
 });

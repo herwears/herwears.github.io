@@ -14,96 +14,111 @@ permalink: /search/
 <div id="results"></div>
 
 <script>
-  function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-  }
+  const searchInput = document.getElementById('search-input');
+  const resultsContainer = document.getElementById('results');
 
-  const keywordFromURL = getQueryParam('keyword')?.toLowerCase() || '';
-  document.getElementById('search-input').value = keywordFromURL;
+  // Ambil keyword dari URL (misal: /search?keyword=kemeja)
+  const keywordFromURL = new URLSearchParams(window.location.search).get('keyword')?.toLowerCase() || '';
+  searchInput.value = keywordFromURL;
 
-  const products = [
-    {% for collection in site.data.products %}
-      {% for product in collection.products %}
-        {
-          name: {{ product.name | jsonify }},
-          code: {{ product.code | jsonify }},
-          label: {{ product.label | jsonify }},
-          image: {{ product.image | jsonify }},
-          price: {{ product.price | jsonify }},
-          collection: {{ collection.title | jsonify }},
-          link: {{ product.link | jsonify }}
-        }{% unless forloop.last and forloop.parentloop.last %},{% endunless %}
-      {% endfor %}
-    {% endfor %}
-  ];
+  // Fetch data dari produk-grouped.json
+  fetch('/products.json')
+    .then(res => res.json())
+    .then(data => {
+      if (keywordFromURL) {
+        renderResults(data, keywordFromURL);
+      }
 
-  function renderGroupedResults(keyword) {
-    const results = document.getElementById('results');
-    results.innerHTML = '';
-
-    if (keyword.length < 2) {
-      results.innerHTML = '<p>Masukkan minimal 2 karakter.</p>';
-      return;
-    }
-
-    // Filter berdasarkan keyword
-    const filtered = products.filter(p =>
-      p.name.toLowerCase().includes(keyword) ||
-      p.code.toLowerCase().includes(keyword) ||
-      p.label.toLowerCase().includes(keyword) ||
-      p.collection.toLowerCase().includes(keyword)
-    );
-
-    if (filtered.length === 0) {
-      results.innerHTML = '<p>Tidak ada hasil ditemukan.</p>';
-      return;
-    }
-
-    // Kelompokkan hasil berdasarkan collection
-    const grouped = {};
-    filtered.forEach(p => {
-      if (!grouped[p.collection]) grouped[p.collection] = [];
-      grouped[p.collection].push(p);
+      searchInput.addEventListener('input', function () {
+        const keyword = this.value.toLowerCase();
+        history.replaceState(null, '', `?keyword=${encodeURIComponent(keyword)}`);
+        renderResults(data, keyword);
+      });
     });
 
-    // Tampilkan hasil per koleksi
-    for (const collectionName in grouped) {
-      const section = document.createElement('div');
-      section.innerHTML = `<h2>📦 ${collectionName}</h2>`;
-      grouped[collectionName].forEach(p => {
-        const item = document.createElement('div');
-        item.innerHTML = `
-          <strong>${p.name}</strong><br>
-          <img src="${p.image}" style="max-width: 100px;"><br>
-          <small>Kode: ${p.code} | Label: ${p.label}</small><br>
-          <strong>Harga: ${p.price}</strong><br>
-          ${generateLinks(p.link)}
-          <hr>
-        `;
-        section.appendChild(item);
-      });
-      results.appendChild(section);
+  function renderResults(collections, keyword) {
+    resultsContainer.innerHTML = '';
+
+    if (keyword.length < 2) {
+      resultsContainer.innerHTML = '<p>Masukkan minimal 2 karakter.</p>';
+      return;
     }
+
+    const filteredCollections = collections.map(group => {
+      const matchedProducts = group.products.filter(product =>
+        product.name.toLowerCase().includes(keyword) ||
+        product.code?.toLowerCase().includes(keyword) ||
+        product.label?.toLowerCase().includes(keyword)
+      );
+
+      return matchedProducts.length > 0 ? {
+        title: group.title,
+        description: group.description,
+        products: matchedProducts
+      } : null;
+    }).filter(Boolean); // hapus null
+
+    if (filteredCollections.length === 0) {
+      resultsContainer.innerHTML = '<p>Tidak ada hasil ditemukan.</p>';
+      return;
+    }
+
+    // Tampilkan hasil per kategori
+    filteredCollections.forEach(group => {
+      let sectionHTML = `
+      <h2>${group.title}</h2>
+      <p>${group.description}</p>
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3" data-js="product:items">
+      `;
+
+      group.products.forEach(product => {
+        sectionHTML += `
+          <div class="relative rounded-xl overflow-hidden p-1 border bg-white border-gray-200 hover:border-gray-300" id="${product.code}">
+            <div class="relative">
+              <div class="card-deco-img relative overflow-hidden aspect-square rounded-lg bg-gray-100">
+                <img class="object-cover" alt="${product.name}" src="${product.image}" loading="lazy">
+              </div>
+              <button class="absolute rounded-sm flex items-center inline-flex bg-gray-50 px-1 py-0.5 text-xs font-medium text-gray-500 h-5 top-1 right-1 cursor-pointer z-7">
+                <svg class="w-3.5 h-3.5" width="100%" height="100%"><use xlink:href="#i.bookmark"></use></svg>
+              </button>
+              <span class="absolute rounded-sm flex items-center inline-flex items-center bg-gray-50 px-1 py-0.5 text-xs font-medium text-gray-500 left-1 top-1">
+                <svg class="w-3.5 h-3.5 opacity-70 text-yellow-400" width="100%" height="100%"><use xlink:href="#i.rating"></use></svg>
+                <span class="ml-1">${product.rating}</span>
+              </span>
+              <span class="absolute rounded-sm flex items-center inline-flex items-center bg-gray-50 px-1 py-0.5 text-xs font-medium text-gray-500 w-16 justify-center right-1 bottom-1">${product.code}</span>
+              <div class="card-deco-img-bar"></div>
+            </div>
+            <div class="p-1 -mt-4">
+              <div class="relative font-heading w-[calc(100%-4.5rem)] text-xxs text-gray-500 mb-1.5">
+                Terjual 1250
+              </div>
+              <span class="go font-heading text-xs text-gray-800 mb-1 line-clamp-2" data-js="product:modal" data-content='${JSON.stringify(product)}'>${product.name}</span>
+              <div class="font-bold text-gray-900">${product.price}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      sectionHTML += '</div>'; // Penutup div section
+      resultsContainer.innerHTML += sectionHTML;
+    });
+
   }
 
-  function generateLinks(link) {
+  function renderLinks(link) {
     if (typeof link === 'string') {
-      return `<a href="${link}" target="_blank">Link Produk</a>`;
-    } else if (typeof link === 'object') {
-      return Object.entries(link).map(([key, url]) => `<a href="${url}" target="_blank">${key}</a>`).join(' | ');
+      return `<a href="${link}" target="_blank">Link</a>`;
     }
+
+    if (typeof link === 'object') {
+      return Object.entries(link)
+        .map(([key, url]) => `<a href="${url}" target="_blank">${key}</a>`)
+        .join(' | ');
+    }
+
     return '';
   }
-
-  // Trigger pencarian saat halaman load
-  if (keywordFromURL) renderGroupedResults(keywordFromURL);
-
-  // Trigger saat input diketik
-  document.getElementById('search-input').addEventListener('input', function (e) {
-    const keyword = e.target.value.toLowerCase();
-    history.replaceState(null, '', `?keyword=${encodeURIComponent(keyword)}`);
-    renderGroupedResults(keyword);
-  });
 </script>
+
+
 
