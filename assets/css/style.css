@@ -493,25 +493,12 @@ U+2212, U+2215, U+FEFF, U+FFFD;
   --shadow: rgba(0, 0, 0, 0.05);
 }
 
-.border {
-  border-color: var(--border-color);
-}
-.border:hover {
-  border-color: var(--border-color-hover);
-}
 .sectionItem:hover {
   box-shadow: 0 0.5rem 2rem 0 #0026610d;
   border-color: var(--border-color-hover);
   transition: border 0.2s, box-shadow 0.2s;
 }
-*,
-::after,
-::before {
-  box-sizing: border-box;
-  border-width: 0;
-  border-style: solid;
-  border-color: #e5e7eb;
-}
+
 ::after,
 ::before {
   --tw-content: "";
