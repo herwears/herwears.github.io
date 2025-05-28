@@ -1,5 +1,5 @@
 <head>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -104,12 +104,14 @@
 
     <!--  -->
     <div class="inModal --product">
-      <div class="w-[calc(100%_-_8px)] max-w-md transition-[inherit] z-[3] relative bg-[white] overflow-hidden mx-auto my-0 p-1 rounded-xl">
+      <div class="w-[calc(100%_-_8px)] max-w-md transition-[inherit] z-[3] relative bg-white overflow-hidden mx-auto my-0 p-1 rounded-xl">
         <div class="flex w-full overflow-hidden flex-col gap-4">
           <div class="relative">
             <div class="bg-gray-800 flex place-center aspect-square overflow-hidden rounded-lg" style="aspect-ratio:3/2;">
               <img data-js="modal:product__header-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="{{ site.title }}" class="object-cover opacity-80">
-              <div class="font-semibold text-sm text-center absolute bg-white m-1.5 p-2 gap-x-8 rounded-md bottom-0 inset-x-0 shadow-md flex items-center justify-between">
+              <!-- INI DIPAKE JIKA PRODUCT ADA OUTFIT YANG DIPAKE -->
+              <!-- <div class="text-xs absolute bg-white gap-x-8 bottom-14 shadow-md right-1.5 rounded-md font-semibold px-2 py-1">Telusuri kategori ini</div> -->
+              <div class="absolute bg-white p-2 gap-x-8 rounded-md flex bottom-1.5 inset-x-1.5 font-semibold justify-between">
                 <h6 class="font-semibold text-base leading-7 text-black truncate" data-js="modal:product__header-title"></h6>
                 <div class="flex items-center space-x-2 text-xs">
                   <span class="font-semibold text-gray-800 whitespace-nowrap" data-js="modal:product__header-sales"></span>
@@ -179,19 +181,19 @@
     </symbol>
 
     <symbol id="i.search" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" x2="16.65" y1="21" y2="16.65" />
-      </symbol>
-      <symbol id="i.close" viewBox="0 0 24 24">
-        <path
-          d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
-        ></path>
-      </symbol>
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" x2="16.65" y1="21" y2="16.65" />
+    </symbol>
+    <symbol id="i.close" viewBox="0 0 24 24">
+      <path
+        d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+      ></path>
+    </symbol>
 
     <symbol id="i.check">
       <path
