@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const ELEMENT_PROFIL_FIRST_BUTTON__BACK = document.querySelector("[data-js='header_button--back']");
   const ELEMENT_PROFIL_FIRST_BUTTON__PROFILE = document.querySelector("[data-js='header_button--profile']");
 
-  const isElementBottomTouching = () => ELEMENT_CONTAINER_BACKGROUND.getBoundingClientRect().bottom >= ELEMENT_CONTAINER_HEADER.getBoundingClientRect().bottom;
+  const isElementBottomTouching = () => ELEMENT_CONTAINER_BACKGROUND.getBoundingClientRect().bottom - 100 >= ELEMENT_CONTAINER_HEADER.getBoundingClientRect().bottom;
   const updateHeaderState = (isActive) => {
     ELEMENT_CONTAINER_HEADER.classList.toggle("border-transparent", !isActive);
     ELEMENT_CONTAINER_HEADER.classList.toggle("bg-white/80", isActive);
