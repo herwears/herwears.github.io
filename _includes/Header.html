@@ -4,7 +4,9 @@
       data-js="{% if page.url == '/' %}header_button--share{% else %}header_button--back{% endif %}">
       <svg class="w-5 h-5 fill-current" width="100%" height="100%"><use xlink:href="{% if page.url == '/' %}#i.share{% else %}#i.back{% endif %}"></use></svg>
     </button>
-    <div class="hidden" data-js="header_button--profile"><img class="w-10 h-10 rounded-full" src="{{ site.logo }}"/></div>
+    <a href="/" class="hidden" data-js="header_button--profile">
+      <img class="w-10 h-10 rounded-full" src="{{ site.logo }}" />
+    </a>
     <a class="inline-flex place-center w-10 h-10 rounded-lg bg-gray-900 cursor-pointer text-white" href="/search">
       <svg class="w-5 h-5 fill-current" width="100%" height="100%"><use xlink:href="#i.search"></use></svg>
     </a>
@@ -32,5 +34,3 @@
     <p class="text-sm md:text-base text-gray-600">Temukan produk terpopuler pilihan kami.</p>
   {% endif %}
 </div>
-
-<div id="global-results" style="position: absolute; background: white; border: 1px solid #ddd;"></div>

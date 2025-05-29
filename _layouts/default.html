@@ -21,27 +21,7 @@
 
   <main class="mb-5">{{ content }}</main>
 
-  <footer class="">
-    <div class="w-full h-auto bg-neutral-300 rounded-xl text-center p-6 flex flex-col items-center justify-end gap-4">
-      <img class="w-12 h-12 object-contain rounded-full" src="{{ site.logo }}" alt="PelukanRasa Logo" />
-      <h2 class="text-xl font-semibold text-gray-800">PelukanRasa</h2>
-      <div class="flex gap-4 text-gray-600">
-        <a href="https://instagram.com/pelukanrasa" target="_blank" class="hover:text-pink-500 transition">
-          <svg class="w-5 h-5" width="100%" height="100%">
-            <use xlink:href="#i.fire"></use>
-          </svg> </a
-        ><a href="https://instagram.com/pelukanrasa" target="_blank" class="hover:text-pink-500 transition">
-          <svg class="w-5 h-5" width="100%" height="100%">
-            <use xlink:href="#i.fire"></use>
-          </svg>
-        </a>
-      </div>
-      <nav class="flex gap-4 text-sm text-gray-700">
-        <a href="/" class="hover:underline">Beranda</a><a href="/" class="hover:underline">Tentang</a><a href="/" class="hover:underline">Kontak</a
-        ><a href="/" class="hover:underline">Privasi</a>
-      </nav>
-    </div>
-  </footer>
+  <footer>{% include Footer.html %}</footer>
 
   <style>
       /* [ inModal ] */ .inModal{display:flex;align-items:center;position:fixed;left:0;right:0;bottom:0;margin-bottom:-100%;z-index:20;transition:var(--trans-1);height:100%;opacity:0;visibility:hidden}.inModal.--open{margin-bottom:0;opacity:1;visibility:visible}.inModal__container{width:calc(100% - 8px);max-width:580px;max-height:calc(100% - 60px);border-radius:12px;transition:inherit;z-index:3;display:flex;overflow:hidden;position:relative;margin:0 auto;box-shadow:0 5px 30px 0 rgba(0,0,0,.05);background-color:white;outline:4px solid white;border:1px solid #e5e7eb}.inModal__overlay{display:block;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1;transition:var(--trans-1);background:transparent;opacity:0;visibility:hidden}.inModal.--open .inModal__overlay{opacity:1;visibility:visible;background-color:rgba(0,0,0,.3)}.inModal__box{width:100%;overflow:hidden}.inModal__header{display:flex;gap:15px;background:inherit;align-items:center;border-bottom:1px solid #e5e7eb;justify-content:space-between;padding:15px;background-image:radial-gradient(#e5e7eb 1px,transparent 1px),radial-gradient(#e5e7eb 1px,rgb(255 255 255) 1px);background-position:0 0,6px 6px;background-size:12px 12px}.inModal__header-title{font-weight:600}.inModal__header-close{width:26px;height:26px;display:flex;justify-content:center;align-items:center;border:1px solid #e5e7eb;border-radius:6px;background-color:white;font-size:13px;font-weight:bold;cursor:pointer}.inModal__header-close:hover{background-color:#f8f8fc}.inModal__content{padding:15px;overflow-y:auto;max-height:calc(100vh - 180px)}.inModal__header__close-button{padding:0 10px;display:flex;align-items:center;justify-content:flex-end;position:relative;flex-shrink:0;min-width:40px;cursor:pointer}.inModal__header__close-button::after{content:'\2715';line-height:18px;font-size:14px}.inModal__header--title::before{content:attr(data-text);color:var(--txt1);flex-grow:1;padding:16px 10px;opacity:.7}.inModal__header--title .inModal__header__close-button::before{content:attr(aria-label);font-size:11px;margin:0 8px;opacity:.6}.inModal__footer{background-color:var(--m3);padding:10px 15px;border-top:1px solid #e5e7eb;font-size:14px}
