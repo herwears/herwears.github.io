@@ -1,0 +1,243 @@
+<script>
+  // Fungsi untuk menghasilkan kunci numerik dari password
+  const generateKeyFromPassword = (password) => {
+    return [...password].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  };
+
+  // Encoder
+  const encodeWithPassword = (input, password) => {
+    const key = generateKeyFromPassword(password);
+    let result = '';
+    const toHex = (charCode) =>
+      charCode.toString(16).padStart(4, '0').toUpperCase();
+
+    for (const char of input) {
+      result += toHex(char.charCodeAt(0) ^ key);
+    }
+
+    return result.split('').reverse().join('');
+  };
+
+const LICENSE_API_URL = "/api/products/1/ELC66a376a82b50720240726171256.json";
+
+// !!! PENTING: Password ini terekspos di sisi klien. Ini hanya untuk mempersulit, BUKAN mengamankan. !!!
+const DECODE_PASSWORD = "MASDHIKA"; // GANTI DENGAN PASSWORD ASLI ANDA
+
+// --- Fungsi Dekripsi Anda ---
+const Decode = (input, password = "") => {
+  const key = [...password].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  let result = "";
+  const fromHex = (hex) => parseInt(hex, 16);
+
+  try {
+    const reversed = input.split("").reverse().join("");
+    for (let i = 0; i < reversed.length; i += 4) {
+      const chunk = reversed.substr(i, 4);
+      result += String.fromCharCode(fromHex(chunk) ^ key);
+    }
+    return result;
+  } catch (error) {
+    return ""; // Return empty string on error for internal handling
+  }
+};
+// --- Akhir Fungsi Dekripsi Anda ---
+
+// --- Fungsi untuk menampilkan pesan di UI ---
+const displayMessage = (message, type = 'error') => {
+    const appMessagesDiv = document.getElementById('app-messages');
+    if (appMessagesDiv) {
+        appMessagesDiv.style.display = 'block';
+        appMessagesDiv.innerHTML = message;
+        if (type === 'success') {
+            appMessagesDiv.style.backgroundColor = '#e8f5e9';
+            appMessagesDiv.style.color = '#388e3c';
+            appMessagesDiv.style.borderColor = '#388e3c';
+        } else if (type === 'warning') {
+            appMessagesDiv.style.backgroundColor = '#fffde7';
+            appMessagesDiv.style.color = '#fbc02d';
+            appMessagesDiv.style.borderColor = '#fbc02d';
+        } else { // default to error
+            appMessagesDiv.style.backgroundColor = '#ffe0e0';
+            appMessagesDiv.style.color = '#d32f2f';
+            appMessagesDiv.style.borderColor = '#d32f2f';
+        }
+    }
+};
+
+// Fungsi untuk menampilkan informasi lisensi detail
+const displayLicenseInfo = (productName, licensedTo, licenseKey, domain) => {
+    const licenseInfoDiv = document.getElementById('license-info');
+    if (licenseInfoDiv) {
+        licenseInfoDiv.style.display = 'block';
+        licenseInfoDiv.innerHTML = `
+            <strong>Detail Lisensi Ditemukan:</strong><br>
+            Produk: ${productName}<br>
+            Dilisensikan untuk: ${licensedTo}<br>
+            Kunci Lisensi: ${licenseKey}<br>
+            Domain Terdaftar: ${domain}
+        `;
+    }
+};
+
+// src/features/featureA.ts
+const featureA = () => {
+  console.log("FITUR_1")
+    // Logika fitur
+};
+
+// src/features/index.ts
+const availableFeatures = {
+    "fitur_1": featureA
+};
+
+const isValidLicense = (licenseData) => {
+    if (!licenseData || typeof licenseData !== 'object') {
+        displayMessage("❌ Data lisensi tidak valid atau kosong. Silakan coba lagi.");
+        return false;
+    }
+
+    // --- Verifikasi Integritas Data Menggunakan Decode dan JSON.stringify ---
+    // Pastikan properti ada atau gunakan string kosong agar JSON.stringify tidak error
+    const dataToVerifyObject = {
+        licenseKey: licenseData.licenseKey || '',
+        status: licenseData.status || '',
+        validUntil: licenseData.validUntil || '',
+        domain: licenseData.domain || '',
+        // Pastikan array diurutkan agar stringify menghasilkan output yang konsisten
+        associated_features: Array.isArray(licenseData.associated_features) ? [...licenseData.associated_features].sort() : []
+    };
+
+    // Urutkan kunci objek untuk memastikan JSON.stringify menghasilkan output yang konsisten
+    // Ini PENTING agar string yang di-enkripsi dan di-dekripsi sama
+    const sortedKeys = Object.keys(dataToVerifyObject).sort();
+    const orderedData = {};
+    for (const key of sortedKeys) {
+        orderedData[key] = dataToVerifyObject[key];
+    }
+
+    const expectedVerificationString = JSON.stringify(orderedData);
+
+    // --- Verifikasi Integritas Data Menggunakan Decode ---
+    const decodedVerification = Decode(licenseData.integrityCode || '', licenseData.productName);
+
+    if (decodedVerification === '') { // Jika dekripsi gagal total
+        displayMessage("🚫 Gagal mendekripsi string verifikasi lisensi. Format tidak valid atau password salah.", 'error');
+        return false;
+    }
+
+    if (decodedVerification !== expectedVerificationString) {
+        displayMessage("🚫 Integritas data lisensi terganggu. Lisensi mungkin telah dimodifikasi.", 'error');
+        return false;
+    }
+    // --- Akhir Verifikasi Integritas Data ---
+
+    if (licenseData.status !== "active") {
+        displayMessage("⚠️ Lisensi Anda tidak aktif. Fitur premium tidak tersedia.");
+        return false;
+    }
+
+    const validUntilDate = new Date(licenseData.validUntil);
+    const currentDate = new Date();
+
+    if (isNaN(validUntilDate.getTime())) {
+        displayMessage(`❌ Format tanggal 'validUntil' pada lisensi tidak valid: ${licenseData.validUntil}.`);
+        return false;
+    }
+
+    if (currentDate > validUntilDate) {
+        displayMessage(`⚠️ Lisensi Anda telah kadaluarsa pada ${licenseData.validUntil}. Mohon perbarui.`);
+        return false;
+    }
+
+    // Jika semua validasi lolos, pesan sukses akan ditangani di initializeApplication
+    return true;
+};
+
+const fetchLicenseData = async () => {
+    try {
+        const response = await fetch(LICENSE_API_URL);
+        if (!response.ok) {
+            displayMessage(`Error saat mengambil data lisensi: HTTP status ${response.status}.`);
+            return null;
+        }
+        const data = await response.json(); // Menerima JSON langsung
+        return data;
+    } catch (error) {
+        if (error instanceof Error) {
+            displayMessage(`Kesalahan jaringan atau parsing saat mengambil data lisensi: ${error.message}.`);
+        } else {
+            displayMessage("Terjadi kesalahan tidak dikenal saat mengambil data lisensi.");
+        }
+        return null;
+    }
+};
+
+const initializeApplication = async () => {
+    // Kosongkan pesan sebelumnya setiap kali inisialisasi dimulai
+    document.getElementById('app-messages').style.display = 'none';
+    document.getElementById('license-info').style.display = 'none';
+
+    const licenseData = await fetchLicenseData();
+
+    if (!licenseData) {
+        // Pesan error sudah ditampilkan oleh fetchLicenseData
+        return;
+    }
+
+    // Validasi lisensi. isValidLicense akan menampilkan pesan error spesifik jika ada masalah.
+    const licenseValid = isValidLicense(licenseData);
+
+    if (!licenseValid) {
+        // Jika lisensi tidak valid dan isValidLicense sudah menampilkan pesan spesifik,
+        // kita tidak perlu menimpa dengan pesan umum "Lisensi tidak valid atau tidak aktif."
+        // Pesan sudah ditampilkan oleh isValidLicense, jadi kita bisa langsung return.
+        return;
+    }
+
+    // Hanya jika lisensi valid, tampilkan pesan sukses umum.
+    displayMessage("🎉 Inisialisasi Aplikasi Selesai! Lisensi Anda aktif.", 'success');
+
+    // Tampilkan detail lisensi jika valid
+    displayLicenseInfo(
+        licenseData.productName || 'N/A',
+        licenseData.licensedTo || 'N/A',
+        licenseData.licenseKey || 'N/A',
+        licenseData.domain || 'N/A'
+    );
+
+    const licensedFeatures = licenseData.associated_features || [];
+
+    if (licensedFeatures.length === 0) {
+        displayMessage("Tidak ada fitur spesifik yang terdaftar dalam lisensi ini.", 'warning');
+        return;
+    }
+
+    licensedFeatures.forEach(featureName => {
+        const featureFunction = availableFeatures[featureName];
+        if (featureFunction) {
+            try {
+              console.log("MENJALANKAN FITUR ==> " + featureName)
+              featureFunction(); // Jalankan fungsi fitur yang terkait
+              console.log("FITUR DONE ==> " + featureName)
+            } catch (error) {
+                if (error instanceof Error) {
+                    displayMessage(`⛔ Error saat menjalankan logika fitur '${featureName}': ${error.message}`);
+                } else {
+                    displayMessage(`⛔ Error tidak dikenal saat menjalankan logika fitur '${featureName}'.`);
+                }
+            }
+        } else {
+            displayMessage(`🤔 Fitur '${featureName}' ada di lisensi tetapi tidak didefinisikan dalam aplikasi.`, 'warning');
+        }
+    });
+};
+
+// Jalankan proses inisialisasi saat aplikasi dimuat
+initializeApplication();
+
+</script>
+<script>
+  const title = "{{ site.title | escape_js }}";
+  window.setting = JSON.parse('{{ site.data.setting | jsonify }}');
+</script>
+<script src="{{ '/assets/js/script_1.js' | relative_url }}"></script>

@@ -17,11 +17,33 @@
 
 <body class="p-2 sm:px-0 max-w-580 mx-auto">
   <div class="has fixed bg-white h-2 z-8 top-0 max-w-[inherit] mx-auto my-0 inset-x-2 sm:inset-x-0"></div>
-  <header class="mb-5">{% include Header.html %}</header>
+  <header class="mb-5">{% include default/Header.html %}</header>
+  <div id="app-messages" style="
+    background-color: #ffe0e0;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 14px;
+    display: none; /* Sembunyikan secara default */
+"></div>
 
+<div id="license-info" style="
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border: 1px solid #388e3c;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 14px;
+    display: none; /* Sembunyikan secara default */
+"></div>
   <main class="mb-5">{{ content }}</main>
-
-  <footer>{% include Footer.html %}</footer>
+  <footer>{% include default/Footer.html %}</footer>
+  <svg class="hidden">{% include default/Icons.html %}</svg>
 
   <style>
       /* [ inModal ] */ .inModal{display:flex;align-items:center;position:fixed;left:0;right:0;bottom:0;margin-bottom:-100%;z-index:20;transition:var(--trans-1);height:100%;opacity:0;visibility:hidden}.inModal.--open{margin-bottom:0;opacity:1;visibility:visible}.inModal__container{width:calc(100% - 8px);max-width:580px;max-height:calc(100% - 60px);border-radius:12px;transition:inherit;z-index:3;display:flex;overflow:hidden;position:relative;margin:0 auto;box-shadow:0 5px 30px 0 rgba(0,0,0,.05);background-color:white;outline:4px solid white;border:1px solid #e5e7eb}.inModal__overlay{display:block;position:fixed;top:0;left:0;right:0;bottom:0;z-index:1;transition:var(--trans-1);background:transparent;opacity:0;visibility:hidden}.inModal.--open .inModal__overlay{opacity:1;visibility:visible;background-color:rgba(0,0,0,.3)}.inModal__box{width:100%;overflow:hidden}.inModal__header{display:flex;gap:15px;background:inherit;align-items:center;border-bottom:1px solid #e5e7eb;justify-content:space-between;padding:15px;background-image:radial-gradient(#e5e7eb 1px,transparent 1px),radial-gradient(#e5e7eb 1px,rgb(255 255 255) 1px);background-position:0 0,6px 6px;background-size:12px 12px}.inModal__header-title{font-weight:600}.inModal__header-close{width:26px;height:26px;display:flex;justify-content:center;align-items:center;border:1px solid #e5e7eb;border-radius:6px;background-color:white;font-size:13px;font-weight:bold;cursor:pointer}.inModal__header-close:hover{background-color:#f8f8fc}.inModal__content{padding:15px;overflow-y:auto;max-height:calc(100vh - 180px)}.inModal__header__close-button{padding:0 10px;display:flex;align-items:center;justify-content:flex-end;position:relative;flex-shrink:0;min-width:40px;cursor:pointer}.inModal__header__close-button::after{content:'\2715';line-height:18px;font-size:14px}.inModal__header--title::before{content:attr(data-text);color:var(--txt1);flex-grow:1;padding:16px 10px;opacity:.7}.inModal__header--title .inModal__header__close-button::before{content:attr(aria-label);font-size:11px;margin:0 8px;opacity:.6}.inModal__footer{background-color:var(--m3);padding:10px 15px;border-top:1px solid #e5e7eb;font-size:14px}
@@ -53,40 +75,9 @@
     </div> -->
 
     <!--  -->
-    <div class="inModal --product">
+    <div class="inModal --product"  data-js="product:modal">
       <div class="w-[calc(100%_-_8px)] max-w-md transition-[inherit] z-[3] relative bg-white overflow-hidden mx-auto my-0 p-1 rounded-xl">
-        <div class="flex w-full overflow-hidden flex-col gap-4">
-          <div class="relative">
-            <div class="bg-gray-800 flex place-center aspect-square overflow-hidden rounded-lg" style="aspect-ratio:3/2;">
-              <img data-js="modal:product__header-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="{{ site.title }}" class="object-cover opacity-80">
-              <!-- INI DIPAKE JIKA PRODUCT ADA OUTFIT YANG DIPAKE -->
-              <!-- <div class="text-xs absolute bg-white gap-x-8 bottom-14 shadow-md right-1.5 rounded-md font-semibold px-2 py-1">Telusuri kategori ini</div> -->
-              <div class="absolute bg-white p-2 gap-x-8 rounded-md flex bottom-1.5 inset-x-1.5 font-semibold justify-between">
-                <h6 class="font-semibold text-base leading-7 text-black truncate" data-js="modal:product__header-title"></h6>
-                <div class="flex items-center space-x-2 text-xs">
-                  <span class="font-semibold text-gray-800 whitespace-nowrap" data-js="modal:product__header-sales"></span>
-                  <div class="flex items-center space-x-1 bg-yellow-400 text-white px-2 py-1 rounded-full ml-2">
-                    <svg class="w-3.5 h-3.5 text-white" width="100%" height="100%"><use xlink:href="#i.rating"></use></svg>
-                    <span data-js="modal:product__header-rating"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="w-7 h-7 flex place-center bg-white font-semibold cursor-pointer rounded-md absolute left-1.5 top-1.5">
-              <svg class="w-3.5 h-3.5" width="100%" height="100%"><use xlink:href="#i.bookmark"></use></svg>
-            </button>
-            <label class="w-7 h-7 flex place-center bg-white font-semibold cursor-pointer rounded-md absolute right-1.5 top-1.5" for="inModal--product">✕</label>
-          </div>
-          <div class="grid grid-cols-1 gap-1.5 px-1.5" data-js="modal:product__content"></div>
-          <div class="inModal__footer">
-            <div class="text-center">
-              <p class="text-sm text-gray-500 mb-2">{{ site.data.setting.messages.modal_shareProduct }}</p>
-              <div class="flex justify-center gap-4">
-                <button class="text-blue-500 hover:text-blue-700" data-js="modal:product__footer-link">{{ site.data.setting.messages.modal_copyLink }}</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="flex w-full overflow-hidden flex-col gap-4" data-js="product:modalContent"></div>
       </div>
       <label class="inModal__overlay" for="inModal--product"></label>
     </div>
@@ -117,96 +108,6 @@
     .backdrop {background-color:rgba(0,0,0,.6);z-index:8;opacity:0;visibility:hidden;transition:all .2s ease;position:fixed;top:0;right:0;bottom:0;left:0;}.has-unique-link .backdrop {opacity:1;visibility:visible;}
   </style>
   <div class="backdrop"></div>
-  <svg class="hidden">
-    <symbol id="i.s.tiktok" viewBox="0 0 448 512">
-      <path
-        d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"
-      ></path>
-    </symbol>
-    <symbol id="i.s.instagram" viewBox="0 0 420 419.997">
-      <path
-        d="M388.818,146.28a24.3,24.3,0,1,1-24.295-24.295A24.3,24.3,0,0,1,388.818,146.28ZM466,256l-0.005.306-1.38,88.105a121.58,121.58,0,0,1-120.2,120.2L256,466l-0.306-.006-88.105-1.376a121.586,121.586,0,0,1-120.206-120.2L46,256l0.006-.306,1.376-88.108a121.59,121.59,0,0,1,120.206-120.2L256,46l0.306,0.006,88.105,1.376a121.584,121.584,0,0,1,120.2,120.2Zm-39.112,0-1.374-87.8A82.654,82.654,0,0,0,343.8,86.485L256,85.114l-87.8,1.371A82.658,82.658,0,0,0,86.484,168.2L85.113,256l1.371,87.8A82.655,82.655,0,0,0,168.2,425.515l87.8,1.371,87.8-1.371A82.651,82.651,0,0,0,425.514,343.8Zm-63.048,0A107.841,107.841,0,1,1,256,148.159,107.962,107.962,0,0,1,363.84,256Zm-39.107,0A68.734,68.734,0,1,0,256,324.734,68.812,68.812,0,0,0,324.732,256Z"
-        transform="translate(-46 -46.001)"
-      ></path>
-    </symbol>
 
-    <symbol id="i.search" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" x2="16.65" y1="21" y2="16.65" />
-    </symbol>
-    <symbol id="i.close" viewBox="0 0 24 24">
-      <path
-        d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243"
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
-      ></path>
-    </symbol>
-
-    <symbol id="i.check">
-      <path
-        d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9s-9-1.8-9-9s1.8-9 9-9"
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
-      ></path>
-    </symbol>
-    <symbol id="i.facebook" viewBox="0 0 32 32">
-      <path
-        d="M24,3H8A5,5,0,0,0,3,8V24a5,5,0,0,0,5,5H24a5,5,0,0,0,5-5V8A5,5,0,0,0,24,3Zm3,21a3,3,0,0,1-3,3H17V18h4a1,1,0,0,0,0-2H17V14a2,2,0,0,1,2-2h2a1,1,0,0,0,0-2H19a4,4,0,0,0-4,4v2H12a1,1,0,0,0,0,2h3v9H8a3,3,0,0,1-3-3V8A3,3,0,0,1,8,5H24a3,3,0,0,1,3,3Z"
-      ></path>
-    </symbol>
-    <symbol id="i.crown" viewBox="0 0 128 128">
-      <path
-        d="M33.812 85.2966L23.3102 43.242C23.1994 42.7984 23.6897 42.4488 24.073 42.6981 35.1549 49.908 49.9261 47.3147 57.8893 36.7611L64.4999 28 71.1105 36.761C79.0737 47.3146 93.845 49.908 104.927 42.6981 105.31 42.4488 105.801 42.7984 105.69 43.242L95.1878 85.2966C95.09 85.6882 94.6983 85.931 94.3041 85.8442 74.6694 81.5244 54.3304 81.5244 34.6958 85.8442 34.3015 85.931 33.9099 85.6882 33.812 85.2966zM34.6816 100.241C54.3256 95.9195 74.6743 95.9195 94.3182 100.241"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="7"
-      ></path>
-    </symbol>
-    <symbol fill="none" id="i.fire" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-      <path
-        d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path>
-      <path
-        d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path>
-    </symbol>
-    <symbol id="i.rating" viewBox="0 0 24 24">
-      <path
-        d="M12,3C10,3,9.8,6.5,8.6,7.8s-5-.2-5.5,2,2.8,3,3.2,4.9-1.6,4.6.2,6S10.1,19,12,19s3.8,3,5.5,1.7-.3-4.1.2-6,3.8-2.6,3.2-4.9-4.2-.7-5.5-2S14,3,12,3Z"
-        fill="currentColor"
-      ></path>
-    </symbol>
-    <symbol id="i.bookmark" viewBox="0 0 24 24">
-      <g transform="translate(0, 1)">
-        <path
-          d="M12,21l-.18,0A14.15,14.15,0,0,1,5.3,17.29a11.61,11.61,0,0,1-3-5.26,10.27,10.27,0,0,1-.22-4.18,6.15,6.15,0,0,1,1.41-3.2A5.44,5.44,0,0,1,9.8,3.52a5.34,5.34,0,0,1,2.07,1.64c0,.06.09.12.13.19s.09-.13.13-.19A5.27,5.27,0,0,1,14.2,3.52a5.44,5.44,0,0,1,6.27,1.13,6.18,6.18,0,0,1,1.41,3.2A10.27,10.27,0,0,1,21.66,12a11.61,11.61,0,0,1-3,5.26A14.15,14.15,0,0,1,12.18,21Z"
-          fill="currentColor"
-        ></path>
-      </g>
-    </symbol>
-    <symbol id="i.back" viewBox="0 0 24 24">
-      <path
-        d="M15.67,23a1.57,1.57,0,0,1-1.22-.58L6.86,13a1.56,1.56,0,0,1,0-2l7.86-9.43a1.57,1.57,0,1,1,2.42,2l-7,8.42,6.79,8.42A1.57,1.57,0,0,1,15.67,23Z"
-      ></path>
-    </symbol>
-    <symbol id='i.share' viewBox='0 0 24 24'><path d='M8.53,4.62A3.47,3.47,0,1,0,12,1.14,3.47,3.47,0,0,0,8.53,4.62ZM1,18.51A3.48,3.48,0,1,0,4.47,15,3.48,3.48,0,0,0,1,18.51ZM19.53,22A3.48,3.48,0,1,1,23,18.51,3.48,3.48,0,0,1,19.53,22ZM6.45,6.43A.87.87,0,0,0,6.52,5.2.86.86,0,0,0,5.3,5.13a10.1,10.1,0,0,0-3.43,7.59.87.87,0,0,0,1.74,0A8.35,8.35,0,0,1,6.45,6.43ZM18.7,5.13a.86.86,0,0,0-1.22.07.87.87,0,0,0,.07,1.23,8.35,8.35,0,0,1,2.84,6.29.87.87,0,1,0,1.74,0A10.1,10.1,0,0,0,18.7,5.13ZM9.9,20.85a.87.87,0,0,0-.43,1.69,10.16,10.16,0,0,0,5.06,0,.87.87,0,1,0-.43-1.69,8.3,8.3,0,0,1-4.2,0Z'></path></symbol>
-
-  </svg>
-
-  <script>
-    const title = "{{ site.title | escape_js }}";
-    const setting = {{ site.data.setting | jsonify }};
-  </script>
-  <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+  {% include default/Script.html %}
 </body>

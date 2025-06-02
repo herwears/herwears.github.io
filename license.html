@@ -1,0 +1,98 @@
+---
+layout: default
+title: Beranda
+permalink: /license.html
+---
+
+<script>
+// Anda akan menjalankan ini di lingkungan Node.js atau environment yang mendukung 'fetch'
+// Jangan masukkan kode ini ke dalam JavaScript Blogger Anda!
+
+// Ini harus SAMA PERSIS dengan DECODE_PASSWORD di kode JavaScript klien Blogger Anda
+const DECODE_PASSWORD_FOR_CLIENT = "MASDHIKA";
+
+// URL API tempat Anda mengambil data lisensi mentah
+const SOURCE_LICENSE_API_URL = "/api/products/1/ELC66a376a82b50720240726171256.json";
+
+// --- Fungsi Encode (Kebalikan dari Decode di klien) ---
+const Encode = (input, password = "") => {
+  const key = [...password].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  let result = "";
+  const toHex = (num) => {
+    let hex = (num).toString(16);
+    while (hex.length < 4) hex = '0' + hex; // Pastikan 4 digit hex
+    return hex;
+  };
+
+  try {
+    for (let i = 0; i < input.length; i++) {
+      result += toHex(input.charCodeAt(i) ^ key);
+    }
+    return result.split("").reverse().join(""); // Balikkan hasil akhirnya
+  } catch (error) {
+    console.error("Error during encoding:", error);
+    return "";
+  }
+};
+// --- Akhir Fungsi Encode ---
+
+const generateLicenseJson = async () => {
+    let actualLicenseData;
+    try {
+        console.log(`Mengambil data lisensi dari: ${SOURCE_LICENSE_API_URL}`);
+        const response = await fetch(SOURCE_LICENSE_API_URL);
+        
+        if (!response.ok) {
+            throw new Error(`Gagal mengambil data: HTTP status ${response.status}`);
+        }
+        
+        actualLicenseData = await response.json();
+        console.log("Data lisensi mentah berhasil diambil:", actualLicenseData);
+
+    } catch (error) {
+        console.error("⛔ Terjadi kesalahan saat mengambil data lisensi:", error.message);
+        // Anda mungkin ingin keluar dari proses jika gagal mengambil data
+        process.exit(1); 
+    }
+
+    // Buat objek data yang akan di-stringified dan di-enkripsi
+    // HARUS SAMA PERSIS dengan properti dan cara pengurutan di isValidLicense pada klien
+    const dataToEncodeObject = {
+        licenseKey: actualLicenseData.licenseKey || '',
+        status: actualLicenseData.status || '',
+        validUntil: actualLicenseData.validUntil || '',
+        domain: actualLicenseData.domain || '',
+        // Pastikan array diurutkan agar stringify menghasilkan output yang konsisten
+        associated_features: Array.isArray(actualLicenseData.associated_features) ? [...actualLicenseData.associated_features].sort() : []
+    };
+
+    // Urutkan kunci objek sebelum stringify (PENTING!)
+    const sortedKeysForEncode = Object.keys(dataToEncodeObject).sort();
+    const orderedDataForEncode = {};
+    for (const key of sortedKeysForEncode) {
+        orderedDataForEncode[key] = dataToEncodeObject[key];
+    }
+
+    const stringToEncrypt = JSON.stringify(orderedDataForEncode);
+
+    // Enkripsi stringified JSON
+    const encryptedVerificationString = Encode(stringToEncrypt, actualLicenseData.productName);
+
+    console.log("\n--- Proses Enkripsi ---");
+    console.log("String JSON yang akan dienkripsi:", stringToEncrypt);
+    console.log("Hasil 'integrityCode' (untuk dimasukkan ke JSON):", encryptedVerificationString);
+
+    // --- Struktur JSON Lisensi Akhir yang akan Anda Hosting ---
+    const finalLicenseJson = {
+        ...actualLicenseData, // Salin semua properti asli dari data yang diambil
+        integrityCode: encryptedVerificationString // Tambahkan string verifikasi
+    };
+
+    console.log("\n--- Struktur JSON Final untuk Hosting ---");
+    console.log("Salin dan gunakan JSON ini untuk file lisensi Anda:");
+    console.log(JSON.stringify(finalLicenseJson, null, 2)); // Menampilkan dengan indentasi 2 spasi
+};
+
+// Jalankan fungsi
+generateLicenseJson();
+</script>

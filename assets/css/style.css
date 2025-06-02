@@ -1262,6 +1262,6 @@ video {
   z-index: 6;
   cursor: pointer;
 }
-
+.aspect-3\/2{aspect-ratio: 3 / 2;}
 
 @media screen and (min-width:768px){::-webkit-scrollbar{-webkit-appearance:none;width:3px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background-color:rgba(0,0,0,.15);var(--borderR)}::-webkit-scrollbar-thumb:hover{background-color:rgba(0,0,0,.35)}::-webkit-scrollbar-thumb:active{background-color:rgba(0,0,0,.35)}}

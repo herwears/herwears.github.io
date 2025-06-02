@@ -18,7 +18,7 @@
       {{ site.data.setting.messages.quantitySold | replace: '[NUMBER]', product.sales }}
     </div>
     <!-- <a class="go font-heading text-xs text-gray-800 mb-1 line-clamp-2" href="//" target="_blank">{{ product.name }}</a> -->
-    <span class="go font-heading text-xs text-gray-800 mb-1 line-clamp-2" data-js="product:modal" data-content='{{ product | jsonify }}'>{{ product.name }}</span>
+    <span class="go font-heading text-xs text-gray-800 mb-1 line-clamp-2" data-js="product:modalClick" data-content='{{ product | jsonify }}'>{{ product.name }}</span>
     <div class="font-bold text-gray-900">{{ product.price }}</div>
   </div>
 </div>

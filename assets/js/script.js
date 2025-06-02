@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const ELEMENT_CONTAINER_BACKGROUND = document.querySelector("[data-js='container-background']");
   const ELEMENT_CONTAINER_HEADER = document.querySelector("[data-js='container-header']");
   
-  const ELEMENT_PROFIL_FIRST_BUTTON__BACK = document.querySelector("[data-js='header_button--back']");
+  
   const ELEMENT_PROFIL_FIRST_BUTTON__PROFILE = document.querySelector("[data-js='header_button--profile']");
 
   const isElementBottomTouching = () => ELEMENT_CONTAINER_BACKGROUND.getBoundingClientRect().bottom - 100 >= ELEMENT_CONTAINER_HEADER.getBoundingClientRect().bottom;
@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeaderState(!isElementBottomTouching());
   };
 
+  const ELEMENT_PROFIL_FIRST_BUTTON__BACK = document.querySelector("[data-js='header_button--back']");
   if (ELEMENT_PROFIL_FIRST_BUTTON__BACK) {
     ELEMENT_PROFIL_FIRST_BUTTON__BACK.addEventListener("click", () => {
       history.length > 1 && document.referrer.startsWith(location.origin) ? history.back() : (location.href = "/");
