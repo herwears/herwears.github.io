@@ -1,0 +1,69 @@
+[
+  {
+    "type": "Shop",
+    "title": "Shop",
+    "tab_id": "shop",
+    "options": [
+      {
+        "id": "produk_unggulan",
+        "text": "Produk Unggulan",
+        "url": "https://www.tokopedia.com/toko_anda/produk_unggulan",
+        "image_url": "https://www.contohwebsite.com/gambar/produk_unggulan.jpg",
+        "price": "Rp 150.000",
+        "description": "Desain eksklusif dan kualitas premium."
+      },
+      {
+        "id": "koleksi_baru",
+        "text": "Koleksi Terbaru",
+        "url": "https://www.shopee.co.id/toko_anda/koleksi_baru",
+        "image_url": "https://www.contohwebsite.com/gambar/koleksi_baru.jpg",
+        "price": "Mulai dari Rp 50.000"
+      },
+      {
+        "id": "diskon_spesial",
+        "text": "Diskon Spesial",
+        "url": "https://www.ecommerce.com/toko_anda/diskon",
+        "image_url": "https://www.contohwebsite.com/gambar/diskon.jpg",
+        "description": "Potongan harga hingga 30% untuk produk tertentu."
+      },
+      {
+        "id": "semua_produk",
+        "text": "Lihat Semua Produk",
+        "url": "https://www.toko_anda.com/shop",
+        "icon": "shopping-bag"
+      }
+    ]
+  },
+  {
+    "type": "Link",
+    "title": "Links",
+    "tab_id": "link",
+    "options": [
+      {
+        "id": "website_utama",
+        "text": "Situs Web Resmi",
+        "url": "https://www.contohwebsite.com",
+        "icon": "globe",
+        "is_highlighted": true
+      },
+      {
+        "id": "portfolio",
+        "text": "Portofolio Terbaru",
+        "url": "https://www.behance.net/nama_anda",
+        "icon": "image"
+      },
+      {
+        "id": "sosial_media",
+        "text": "Ikuti di Media Sosial",
+        "url": "https://www.instagram.com/nama_anda",
+        "icon": "instagram"
+      },
+      {
+        "id": "kontak",
+        "text": "Hubungi Kami",
+        "url": "mailto:email@contoh.com",
+        "icon": "envelope"
+      }
+    ]
+  }
+]

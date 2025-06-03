@@ -4,7 +4,122 @@ title: Beranda
 permalink: /
 ---
 
+<h1>Selamat Datang</h1>
+
+{% comment %} Loop melalui data dari _data/homepage.json {% endcomment %}
+{% for item in site.data.homepage %}
+  <h2>{{ item.title }}</h2>
+  {% assign data_file = item.id | append: ".json" %}
+  {% assign current_data = site.data[item.id] %}
+
+  {% comment %} Sekarang kamu bisa mengakses data dari file JSON yang sesuai {% endcomment %}
+  {% if item.id == "shop" %}
+    <p>Ini adalah konten dari **_data/shop.json**:</p>
+    <ul>
+      {% for product in current_data %}
+        <li>{{ product.name }} - {{ product.price }}</li>
+      {% endfor %}
+    </ul>
+  {% elsif item.id == "links" %}
+    <p>Ini adalah konten dari **_data/links.json**:</p>
+    <ul>
+      {% for link in current_data %}
+        <li><a href="{{ link.url }}">{{ link.text }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Tidak ada data spesifik untuk ID ini: {{ item.id }}</p>
+  {% endif %}
+
+  <hr> {# Garis pemisah untuk setiap bagian #}
+{% endfor %}
+
+<style>
+  .tab-button.active{background-color: white;color: #6b7280;font-weight: 500;}
+</style>
+
 {% for collection in site.data.homepage %}
+<nav class="w-full bg-neutral-400 rounded-xl border-2 border-neutral-400 overflow-hidden">
+  <div class="w-full flex">
+    {% assign sections = site.data.TEST_homepage %}
+    {% for section in sections %}
+      <button class="tab-button flex-1 py-3 text-center h-8 rounded-lg text-white {% if forloop.first %}active{% endif %}"  data-tab-target="#{{ section.tab_id }}">{{ section.title }}</button>
+    {% endfor %}
+  </div>
+</nav>
+
+<div class="tab-content-wrapper mt-8">
+  {% for section in sections %}
+    <div id="{{ section.tab_id }}" class="tab-content {% unless forloop.first %}hidden{% endunless %}">
+      <h2 class="text-2xl font-bold mb-4">{{ section.title }}</h2>
+      {% if section.type == "Link" %}
+        <ul class="space-y-4">
+          {% for option in section.options %}
+            <li class="bg-gray-100 p-4 rounded-lg shadow-md">
+              <a href="{{ option.url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-blue-600 hover:underline">
+                {% if option.icon %}
+                  <i class="fa fa-{{ option.icon }}"></i>
+                {% endif %}
+                <span class="text-lg font-medium">{{ option.text }}</span>
+                {% if option.is_highlighted %}
+                  <span class="ml-auto text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded-full">Populer</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% elsif section.type == "Shop" %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for option in section.options %}
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+              {% if option.image_url %}
+                <img src="{{ option.image_url }}" alt="{{ option.text }}" class="w-full h-48 object-cover rounded-md mb-3">
+              {% endif %}
+              <h3 class="text-xl font-semibold mb-2">{{ option.text }}</h3>
+              {% if option.price %}
+                <p class="text-green-600 font-bold text-lg mb-2">{{ option.price }}</p>
+              {% endif %}
+              {% if option.description %}
+                <p class="text-gray-700 text-sm mb-3 flex-grow">{{ option.description }}</p>
+              {% endif %}
+              <a href="{{ option.url }}" target="_blank" rel="noopener noreferrer" class="mt-auto bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 text-center">
+                Lihat Produk
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and hide all content
+        tabButtons.forEach(btn => {
+          btn.classList.remove('active');
+        });
+        tabContents.forEach(content => content.classList.add('hidden'));
+
+        // Add active class to clicked button and show its content
+        button.classList.add('active');
+
+        const targetTabId = button.dataset.tabTarget;
+        document.querySelector(targetTabId).classList.remove('hidden');
+
+      });
+    });
+
+  });
+</script>
+
+<!-- {% for collection in site.data.homepage %}
   {% assign matched_collections = site.data.products | where: "id", collection.id %}
   {% assign matched_collection = matched_collections[0] %}
 
@@ -14,5 +129,5 @@ permalink: /
   {% else %}
     <p><em>Koleksi dengan ID {{ collection.id }} tidak ditemukan.</em></p>
   {% endif %}
-{% endfor %}
+{% endfor %} -->
 

@@ -1,8 +1,10 @@
-# - id: "chosen-by-our-experts"
-#   type: "collection"
-
-- id: "kemeja"
-  type: "collection"
-
-- id: "topi"
-  type: "collection"
+[
+  {
+    "id": "shop",
+    "title": "Shop"
+  },
+  {
+    "id": "links",
+    "title": "Menu Link"
+  }
+]
