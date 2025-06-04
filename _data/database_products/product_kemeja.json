@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Kemeja_1",
+    "code": "KMJ_002",
+    "image": "/assets/images/kemeja-1.jfif",
+    "link": {
+      "shopee": "https://shopee",
+      "tokopedia": "https://tokopedia",
+      "tiktok": "https://tiktok"
+    },
+    "label": "Best Seller",
+    "rating": "4.8",
+    "price": "$59.99",
+    "sales": "1250"
+  },
+  {
+    "name": "Kemeja_2",
+    "code": "Kemeja_2a",
+    "image": "/assets/images/kemeja-2.jfif",
+    "link": {
+      "tokopedia": "https://tokopedia",
+      "tiktok": "https://tiktok"
+    },
+    "label": "Top Rated",
+    "rating": "4.6",
+    "price": "$79.99",
+    "sales": "980"
+  },
+  {
+    "name": "Kemeja_3",
+    "code": "Kemeja_3a",
+    "image": "/assets/images/kemeja-3.jfif",
+    "link": "//",
+    "label": "Hot Deal",
+    "rating": "4.4",
+    "price": "$9.99",
+    "sales": "3420"
+  },
+  {
+    "name": "Kemeja_4",
+    "code": "Kemeja_4a",
+    "image": "/assets/images/kemeja-4.jfif",
+    "link": "//",
+    "label": "Hot Deal",
+    "rating": "4.4",
+    "price": "$9.99",
+    "sales": "3420"
+  }
+]

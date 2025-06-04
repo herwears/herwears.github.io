@@ -1,0 +1,22 @@
+<h1>premium_product</h1>
+
+<!-- Loop melalui metadata item dari _data/products.json -->
+{% for items in site.data.products %}
+  <h2>{{ items.title }} (ID: {{ items.id }})</h2>
+
+  <!-- Secara dinamis memuat data produk yang sesuai dari _data/database_products/ dengan menggunakan items.product_ref -->
+  {% assign product_data = site.data.database_products[items.product_ref] %}
+
+  {% if product_data %}
+    <p>Ini adalah detail produk dari `_data/database_products/{{ items.product_ref }}.json`:</p>
+    <ul>
+      {% for item in product_data %}
+        <li>Nama: {{ item.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Data produk untuk referensi "{{ items.product_ref }}" tidak ditemukan.</p>
+  {% endif %}
+
+  <hr>
+{% endfor %}

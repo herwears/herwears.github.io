@@ -6,14 +6,14 @@ permalink: /collections/
 
 <h1>Daftar Koleksi</h1>
 
-<ul>
+<!-- <ul>
   {% assign labels = site.collection | map: "label" | uniq | sort %}
   {% for label in labels %}
     <li><a href="/collection/{{ label | slugify }}/">{{ label | capitalize }}</a></li>
   {% endfor %}
-</ul>
+</ul> -->
 
-{% for collection in site.data.homepage %}
+<!-- {% for collection in site.data.homepage %}
   {% assign matched_collections = site.data.products | where: "id", collection.id %}
   {% assign matched_collection = matched_collections[0] %}
 
@@ -27,4 +27,4 @@ permalink: /collections/
   {% else %}
     <p><em>Koleksi dengan ID {{ collection.id }} tidak ditemukan.</em></p>
   {% endif %}
-{% endfor %}
+{% endfor %} -->

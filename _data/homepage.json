@@ -1,10 +1,10 @@
 [
   {
-    "id": "shop",
-    "title": "Shop"
-  },
-  {
     "id": "links",
     "title": "Menu Link"
+  },
+  {
+    "id": "shop",
+    "title": "Shop"
   }
 ]

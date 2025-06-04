@@ -1,0 +1,48 @@
+[
+  {
+    "id": "link",
+    "type": "Basics/Link/link",
+    "data": {
+      "name": "Link",
+      "url": "https://bagibagi.co/1"
+    }
+  },
+  {
+    "id": "link-view",
+    "type": "Basics/Link/link-view",
+    "data": {
+      "name": "Link View",
+      "url": "https://bagibagi.co/2",
+      "description": "Link description"
+    }
+  },
+  {
+    "id": "links-list",
+    "type": "Basics/Link/links-list",
+    "data": {
+      "name": "Links List",
+      "url": "https://bagibagi.co/2",
+      "description": "Link description",
+      "listDataItems": [
+        {
+          "title": "Link 1",
+          "url": "#",
+          "description": "Link description",
+          "image": "/assets/images/himwears.png"
+        },
+        {
+          "title": "Link 2",
+          "url": "#",
+          "description": "Link description",
+          "image": "/assets/images/himwears.png"
+        },
+        {
+          "title": "Link 3",
+          "url": "#",
+          "description": "Link description",
+          "image": "/assets/images/himwears.png"
+        }
+      ]
+    }
+  }
+]
