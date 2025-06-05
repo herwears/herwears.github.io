@@ -1,0 +1,23 @@
+{% assign data = include.product_data %}
+<div class="bg-neutral-100 border-2 border-neutral-300 p-2 rounded-xl flex justify-around">
+  <div>
+    <div class="accordion-title">{{ data.name }}</div>
+    <div class="accordion-content">
+      
+      <div>
+        {% for lists in data.listDataItems %}
+          <div class="my_product_wrap">
+            <div class="my_product_image">
+              <img alt="" class="lazyload loaded" height="48" src="{{ lists.image }}" width="48"/>
+            </div>
+            <div class="my_product_summary">
+              <div class="my_product_title" data-label="Star">{{ lists.title }}</div>
+              <span class="my_product_snippet">{{ lists.description }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  </div>
+</div>

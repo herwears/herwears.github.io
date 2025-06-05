@@ -2,11 +2,11 @@
   {
     "name": "Baju Kaos 1",
     "price": "Rp 150.000",
-    "type": "Basics/Link/link"
+    "type": "Basics/link"
   },
   {
     "name": "Celana Jeans Premium 1",
     "price": "Rp 500.000",
-    "type": "Basics/Link/link"
+    "type": "Basics/link"
   }
 ]

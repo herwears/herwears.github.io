@@ -1,7 +1,7 @@
 [
   {
     "id": "link",
-    "type": "Basics/Link/link",
+    "type": "Basics/link",
     "data": {
       "name": "Link",
       "url": "https://bagibagi.co/1"
@@ -9,7 +9,7 @@
   },
   {
     "id": "link-view",
-    "type": "Basics/Link/link-view",
+    "type": "Basics/link-view",
     "data": {
       "name": "Link View",
       "url": "https://bagibagi.co/2",
@@ -18,7 +18,7 @@
   },
   {
     "id": "links-list",
-    "type": "Basics/Link/links-list",
+    "type": "Basics/links-list",
     "data": {
       "name": "Links List",
       "url": "https://bagibagi.co/2",

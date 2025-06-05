@@ -16,30 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
   `).join('');
   }
 
-  document.body.addEventListener("click", function (event) {
-    const item = event.target.closest("[data-js='product:modal']");
-    if (item) {
-      const content = JSON.parse(item.dataset.content);
-      // lakukan sesuatu dengan `content`
-      console.log(content);
-
-      const checkbox = document.getElementById("inModal--product");
-      checkbox.checked = !checkbox.checked;
-
-      $("modal:product__header-image").src = content.image;
-      $("modal:product__header-image").alt = content.name;
-      $("modal:product__header-title").textContent = content.name;
-      $("modal:product__header-sales").textContent = setting.messages.quantitySold.replace("[NUMBER]", String(content.sales));
-      $("modal:product__header-rating").textContent = content.rating;
-
-      $("modal:product__content").innerHTML = generateProductModalHTML(content.link);
-
-      $("modal:product__footer-link").setAttribute('onclick', `navigator.clipboard.writeText('${urlLink}#${content.code}')`);
-
-      event.preventDefault();
-    }
-  });
-
   function uniqueLink(duration = 3000, highlightClass = 'z-9') {
     const hash = window.location.hash; // contoh: #Kemeja_4a
     if (!hash) return;
@@ -70,37 +46,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   uniqueLink();
 
-
-
-
-
-
-  // HEADER
-  const ELEMENT_CONTAINER_BACKGROUND = document.querySelector("[data-js='container-background']");
-  const ELEMENT_CONTAINER_HEADER = document.querySelector("[data-js='container-header']");
-  
-  
-  const ELEMENT_PROFIL_FIRST_BUTTON__PROFILE = document.querySelector("[data-js='header_button--profile']");
-
-  const isElementBottomTouching = () => ELEMENT_CONTAINER_BACKGROUND.getBoundingClientRect().bottom - 100 >= ELEMENT_CONTAINER_HEADER.getBoundingClientRect().bottom;
-  const updateHeaderState = (isActive) => {
-    ELEMENT_CONTAINER_HEADER.classList.toggle("border-transparent", !isActive);
-    ELEMENT_CONTAINER_HEADER.classList.toggle("bg-white/80", isActive);
-    ELEMENT_CONTAINER_HEADER.classList.toggle("border-gray-200", isActive);
-    ELEMENT_CONTAINER_HEADER.classList.toggle("backdrop-blur-xs", isActive);
-    ELEMENT_PROFIL_FIRST_BUTTON__PROFILE.classList.toggle("hidden", !isActive);
-  };
-  const updateFromScroll = () => {
-    updateHeaderState(!isElementBottomTouching());
-  };
-
-  const ELEMENT_PROFIL_FIRST_BUTTON__BACK = document.querySelector("[data-js='header_button--back']");
-  if (ELEMENT_PROFIL_FIRST_BUTTON__BACK) {
-    ELEMENT_PROFIL_FIRST_BUTTON__BACK.addEventListener("click", () => {
-      history.length > 1 && document.referrer.startsWith(location.origin) ? history.back() : (location.href = "/");
-    });
-  }
-
-  updateFromScroll();
-  window.addEventListener("scroll", updateFromScroll);
 });

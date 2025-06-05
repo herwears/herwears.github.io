@@ -8,9 +8,11 @@
     "list": [
       {
         "name": "Link",
-        "list": [
-          "Link button", "Link"
-        ]
+        "list": ["link", "link-view", "link-list"]
+      },
+      {
+        "name": "List",
+        "list": ["links-list", "products"]
       }
     ]
   }
