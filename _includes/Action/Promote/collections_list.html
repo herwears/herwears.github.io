@@ -1,6 +1,6 @@
 {% assign data = include.product_data %}
 {% assign database_product = site.data.database_products[data.product_ref] %}
-<div class="relative border bg-neutral-100 border-2 border-neutral-300 p-4 rounded-xl" data-ref="{{ data.product_ref }}">
+<div class="relative border bg-neutral-100 border-2 border-neutral-300 p-4 rounded-xl" data-id="{{ data.id }}" data-ref="{{ data.product_ref }}">
   <div class="flex items-center mb-4">
     <div class="relative mr-3">
       <div class="bg-gray-200 rounded-full w-14 h-14 flex place-center"><span class="font-bold text-2xl">B</span></div>
