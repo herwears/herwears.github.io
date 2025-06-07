@@ -1,15 +1,14 @@
 {% assign data = include.product_data %}
 {% assign database_product = site.data.database_products[data.product_ref] %}
-<div class="relative border bg-neutral-100 border-2 border-neutral-300 p-2 rounded-xl" data-id="{{ data.id }}" data-ref="{{ data.product_ref }}">
+<div class="relative border bg-neutral-50 border-2 border-neutral-200 p-2 rounded-xl" data-id="{{ data.id }}" data-ref="{{ data.product_ref }}">
   <div class="flex items-center mb-4 justify-between">
-    <div class="flex">
-      <div class="bg-gray-200 rounded-full w-12 h-12 flex place-center mr-3"><span class="font-bold text-2xl">B</span></div>
+    <div class="flex items-center">
+      <div class="bg-gray-200 rounded-lg w-10 h-10 flex place-center mr-3"><span class="font-bold text-2xl">B</span></div>
       <div class="">
         <h2 class="text-base font-bold">{{ data.title }}</h2>
         <span class="text-gray-500 flex items-center text-xs">
-          <svg class="w-4 h-4 me-1.5 stroke-gray-500" width="100%" height="100%"><use xlink:href="#i.fire"></use></svg>
           {% assign product_length = database_product.size %}
-          <span>{{ data.textSum | replace: '[NUMBER]', product_length }}</span>
+          {{ data.textSum | replace: '[NUMBER]', product_length }}
         </span>
       </div>
     </div>
