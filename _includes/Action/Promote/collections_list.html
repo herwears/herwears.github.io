@@ -1,0 +1,36 @@
+{% assign data = include.product_data %}
+{% assign database_product = site.data.database_products[data.product_ref] %}
+<div class="relative border bg-neutral-100 border-2 border-neutral-300 p-4 rounded-xl" data-ref="{{ data.product_ref }}">
+  <div class="flex items-center mb-4">
+    <div class="relative mr-3">
+      <div class="bg-gray-200 rounded-full w-14 h-14 flex place-center"><span class="font-bold text-2xl">B</span></div>
+      <div class="absolute bg-blue-500 rounded-full w-6 h-6 flex place-center border-2 border-white bottom-0 right-0">
+        <svg class="h-4 w-4 stroke-white" width="100%" height="100%"><use xlink:href="#i.crown"></use></svg>
+      </div>
+    </div>
+    <div class="">
+      <h2 class="text-xl font-bold">{{ data.title }}</h2>
+      <span class="text-gray-500 flex items-center text-sm">
+        <svg class="w-4 h-4 me-1.5 stroke-gray-500" width="100%" height="100%"><use xlink:href="#i.fire"></use></svg>
+        {% assign product_length = database_product.size %}
+        <span>{{ data.textSum | replace: '[NUMBER]', product_length }}</span>
+      </span>
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-2">
+    {% for i in (1..3) %}
+      <div class="relative bg-gray-200 rounded-lg aspect-square overflow-hidden animate-pulse">
+        <div class="w-full h-full bg-neutral-300"></div>
+        <span class="absolute bg-white m-1 p-1 rounded-md bottom-0 inset-x-0 h-4"></span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- {% assign product_file = database_product | sample: 3 %}
+{% for product in product_file %}
+  <div class="relative bg-gray-200 rounded-lg aspect-square overflow-hidden">
+    <img class="w-full h-full object-cover" src="{{ product.image }}" alt="{{ product.name }}"/>
+    <span class="font-semibold text-sm text-center absolute bg-white m-1 p-1 rounded-md bottom-0 inset-x-0">{{ product.price }}</span>
+  </div>
+{% endfor %}
+<a class="absolute h-full w-full inset-0" href="/collections/{{ data.id }}"></a> -->

@@ -1,0 +1,11 @@
+---
+layout: none
+permalink: /api/product.json
+---
+
+{
+  {% assign files = site.data.database_products %}
+  {% for name in files %}
+    "{{ name[0] }}": {{ name[1] | jsonify }}{% if forloop.last == false %},{% endif %}
+  {% endfor %}
+}

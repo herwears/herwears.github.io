@@ -231,11 +231,7 @@ body {
   position: absolute;
   width: 100%;
 }
-.sectionItem:hover {
-  box-shadow: 0 0.5rem 2rem 0 #0026610d;
-  border-color: var(--border-color-hover);
-  transition: border 0.2s, box-shadow 0.2s;
-}
+
 .has:before {
   left: 0px;
   top: 8px;
@@ -491,12 +487,6 @@ U+2212, U+2215, U+FEFF, U+FFFD;
   --border-color: #ebe6e7;
   --border-color-hover: #dadada;
   --shadow: rgba(0, 0, 0, 0.05);
-}
-
-.sectionItem:hover {
-  box-shadow: 0 0.5rem 2rem 0 #0026610d;
-  border-color: var(--border-color-hover);
-  transition: border 0.2s, box-shadow 0.2s;
 }
 
 ::after,

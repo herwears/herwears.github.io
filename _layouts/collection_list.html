@@ -11,11 +11,10 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
-  {% assign category = page.category %}
-  {% assign this_products = site.data.products | where: "id", category | first %}
+  {% assign product_file = site.data.database_products[page.product_ref] %}
 
-  {% if this_products.products.size > 0 %}
-    {% for product in this_products.products %} {% include productItems.html product=product %} {% endfor %}
+  {% if product_file.size > 0 %}
+    {% for product in product_file %} {% include productItems.html product=product %} {% endfor %}
   {% else %}
     <p>Tidak ada produk di kategori ini.</p>
   {% endif %}

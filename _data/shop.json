@@ -1,12 +1,26 @@
 [
   {
-    "name": "Baju Kaos 1",
-    "price": "Rp 150.000",
-    "type": "Basics/link"
+    "id": "kemeja",
+    "type": "Promote/collections_list",
+    "data": {
+      "title": "Kemeja Terkini",
+      "id": "kemeja",
+      "description": "Temukan kemeja terbaik untuk gayamu.",
+      "type": "collection",
+      "textSum": "[NUMBER] Products",
+      "product_ref": "product_kemeja"
+    }
   },
   {
-    "name": "Celana Jeans Premium 1",
-    "price": "Rp 500.000",
-    "type": "Basics/link"
+    "id": "topi",
+    "type": "Promote/collections_list",
+    "data": {
+      "title": "Topi Terkini",
+      "id": "topi",
+      "description": "Temukan topi terbaik untuk gayamu.",
+      "type": "collection",
+      "textSum": "[NUMBER] Products",
+      "product_ref": "product_topi"
+    }
   }
 ]

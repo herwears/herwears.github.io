@@ -1,14 +1,14 @@
 [
   {
-    "id": "links",
-    "title": "Menu Link"
-  },
-  {
     "id": "shop",
     "title": "Shop"
   },
   {
-    "id": "shop",
+    "id": "links",
+    "title": "Menu Link"
+  },
+  {
+    "id": "contact",
     "title": "Chat Me"
   }
 ]

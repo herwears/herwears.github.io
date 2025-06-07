@@ -10,7 +10,7 @@
     },
     "label": "Best Seller",
     "rating": "4.8",
-    "price": "$59.99",
+    "price": "Rp 139.000",
     "sales": "1250"
   },
   {
@@ -23,7 +23,7 @@
     },
     "label": "Top Rated",
     "rating": "4.6",
-    "price": "$79.99",
+    "price": "Rp 39.000",
     "sales": "980"
   },
   {
@@ -33,7 +33,7 @@
     "link": "//",
     "label": "Hot Deal",
     "rating": "4.4",
-    "price": "$9.99",
+    "price": "Rp 109.000",
     "sales": "3420"
   },
   {
@@ -43,7 +43,7 @@
     "link": "//",
     "label": "Hot Deal",
     "rating": "4.4",
-    "price": "$9.99",
+    "price": "Rp 199.000",
     "sales": "3420"
   }
 ]
