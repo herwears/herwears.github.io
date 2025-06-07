@@ -1,10 +1,20 @@
 <div class="flex gap-x-3">
   {% for i in (1..2) %}
-  <section class="relative border bg-neutral-50 border-2 border-neutral-200 p-2 rounded-xl">
+  <section class="relative border bg-neutral-100 border-2 border-neutral-300 p-2 rounded-xl">
     
     <!-- Outfit Image -->
     <div class="aspect-square relative mb-3">
       <img class="object-cover rounded-lg" src="/assets/images/3.webp" alt="UGREEN Powerbank Fast Charging Laptop Macbook Pro Air 20000mAh 25000mAh USB Type C - 20000 mAh">
+      <div class="absolute bg-white p-2 gap-x-8 rounded-md flex bottom-1.5 inset-x-1.5 font-semibold justify-between">
+        <h6 class="font-semibold text-base leading-7 text-black truncate">Kemeja_4</h6>
+        <div class="flex items-center space-x-2 text-xs">
+          <span class="font-semibold text-gray-800 whitespace-nowrap">Terjual 3420</span>
+          <div class="flex items-center space-x-1 bg-yellow-400 text-white px-2 py-1 rounded-full ml-2">
+            <svg class="w-3.5 h-3.5 text-white" width="100%" height="100%"><use xlink:href="#i.rating"></use></svg>
+            <span class="">4.4</span>
+          </div>
+        </div>
+      </div>
     </div>
     
     <!-- Outfit Products -->
@@ -39,7 +49,7 @@
 </section>
 {% endfor %}
 </div>
-<section class="relative border bg-neutral-50 border-2 border-neutral-200 p-2 rounded-xl">
+<section class="relative border bg-neutral-100 border-2 border-neutral-300 p-2 rounded-xl">
     
     <!-- Outfit Image -->
     <div class="aspect-square relative mb-3">
@@ -50,7 +60,7 @@
     <div class="">
         <h3 class="text-sm font-semibold text-gray-500 uppercase mb-4 text-center">INCLUDED ITEMS</h3>
         
-        <div class="grid grid-cols-3 gap-3">
+        <div class="grid grid-cols-2 gap-3">
             {% for i in (1..4) %}
             <div class="flex items-center">
                 <div class="aspect-square relative">
