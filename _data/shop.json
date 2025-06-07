@@ -22,5 +22,17 @@
       "textSum": "[NUMBER] Products",
       "product_ref": "product_topi"
     }
+  },
+  {
+    "id": "topi",
+    "type": "Promote/outfit",
+    "data": {
+      "title": "Topi Terkini",
+      "id": "topi",
+      "description": "Temukan topi terbaik untuk gayamu.",
+      "type": "collection",
+      "textSum": "[NUMBER] Products",
+      "product_ref": "product_topi"
+    }
   }
 ]
