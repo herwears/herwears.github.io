@@ -7,15 +7,15 @@
   <title>{{ page.title }} | {{ site.title }}</title>
   <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}" />
 
-  <!-- <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}" /> -->
   <!-- ✅ Tambahkan custom CSS kamu di bawah sini -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/fix.css' | relative_url }}" />
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" /> -->
 
   <!-- Favicon, fonts, dsb -->
 </head>
 
-<body class="p-2 sm:px-0 max-w-580 mx-auto">
+<body class="p-2 sm:px-0 max-w-[580px] mx-auto">
   <div class="has fixed bg-white h-2 z-8 top-0 max-w-[inherit] mx-auto my-0 inset-x-2 sm:inset-x-0"></div>
   <header class="mb-5">{% include default/Header.html %}</header>
   <style>

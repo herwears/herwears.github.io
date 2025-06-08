@@ -11,9 +11,7 @@
     },
     "list": {
       "tiktok": { "name": "TikTok", "color": "bg-black hover:bg-gray-800" },
-      "shopee": { "name": "Shopee", "color": "bg-orange-500 hover:bg-orange-600" },
-      "tokopedia": { "name": "Tokopedia", "color": "bg-green-500 hover:bg-green-600" }
+      "shopee": { "name": "Shopee", "color": "bg-orange-500 hover:bg-orange-600" }
     }
-
   }
 }

@@ -1,14 +1,14 @@
 [
   {
-    "id": "shop",
-    "title": "Shop"
+    "id": "collection",
+    "title": "Collection"
   },
   {
     "id": "links",
-    "title": "Menu Link"
+    "title": "Links"
   },
   {
-    "id": "contact",
-    "title": "Chat Me"
+    "id": "outfit",
+    "title": "Outfit"
   }
 ]

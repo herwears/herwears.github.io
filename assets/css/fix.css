@@ -1,0 +1,63 @@
+.text-xxs {
+  font-size: 0.625rem;
+}
+
+.go::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  cursor: pointer;
+}
+
+.has:before {
+  left: 0px;
+  top: 8px;
+  box-shadow: -0.2rem -0.2rem 0 0.2rem #ffffff;
+  border-top-left-radius: 12px;
+}
+
+.has:after {
+  right: 0;
+  top: 8px;
+  box-shadow: 0.2rem -0.2rem 0 0.2rem #ffffff;
+  border-top-right-radius: 12px;
+}
+
+.has:before,
+.has:after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  width: 12px;
+}
+.card-deco-img::before,
+.card-deco-img::after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  box-shadow: -0.2rem 0.2rem 0 0.2rem #fff; /* custom shadow */
+  border-bottom-left-radius: 10px;
+}
+
+.card-deco-img::before {
+  width: 0.625rem; /* w-2.5 */
+  left: 0;
+  bottom: 1rem; /* bottom-4 */
+}
+
+.card-deco-img::after {
+  width: 0.5rem; /* w-2 */
+  right: 4rem; /* right-8 */
+  bottom: 0;
+}
+
+.card-deco-img-bar {
+  position: absolute;
+  left: 0;
+  right: 4.5rem; /* right-10 */
+  bottom: 0;
+  min-height: 1rem;
+  background-color: white;
+  border-top-right-radius: 0.5rem;
+}

@@ -3,7 +3,7 @@
 <div class="relative border bg-neutral-50 border-2 border-neutral-200 p-3 rounded-xl" data-id="{{ data.id }}" data-ref="{{ data.product_ref }}">
   <div class="flex items-center mb-3 justify-between">
     <div class="flex items-center">
-      <div class="bg-gray-200 rounded-lg w-10 h-10 flex place-center mr-3">
+      <div class="bg-gray-200 rounded-lg w-10 h-10 flex justify-center items-center mr-3">
         <span class="font-bold text-2xl">{{ data.title | slice: 0, 1 | upcase }}</span>
       </div>
       <div class="">
@@ -25,7 +25,7 @@
     {% for i in (1..3) %}
       <div class="relative bg-gray-200 rounded-lg aspect-square overflow-hidden animate-pulse">
         <div class="w-full h-full bg-neutral-300"></div>
-        <span class="absolute bg-white m-1 p-1 rounded-md bottom-0 inset-x-0 h-4"></span>
+        <span class="absolute bg-white m-1 p-1 rounded-md bottom-0 inset-x-0 h-6"></span>
       </div>
     {% endfor %}
   </div>

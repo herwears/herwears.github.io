@@ -194,7 +194,7 @@
   border-top-right-radius: 0.5rem;
 }
 
-.max-w-580 {
+.max-w-[580px] {
   max-width: 580px;
 }
 
@@ -469,7 +469,7 @@ U+2212, U+2215, U+FEFF, U+FFFD;
   bottom: 0;
 }
 
-.max-w-580 {
+.max-w-[580px] {
   max-width: 580px;
 }
 /*  */
