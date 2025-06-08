@@ -1,7 +1,8 @@
 [
   {
     "id": "kemeja",
-    "type": "Promote/collections_list",
+    "type": "Promote/collection/style_1",
+    "style": 1,
     "data": {
       "title": "Kemeja Terkini",
       "id": "kemeja",
@@ -13,7 +14,7 @@
   },
   {
     "id": "topi",
-    "type": "Promote/collections_list",
+    "type": "Promote/collection/style_2",
     "data": {
       "title": "Topi Terkini",
       "id": "topi",
