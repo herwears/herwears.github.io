@@ -23,7 +23,7 @@ permalink: /
   <nav class="bg-neutral-400 rounded-full border-2 border-neutral-400 overflow-hidden max-w-xs mx-auto mb-5">
     <div class="w-full flex">
       {% for item in site.data.homepage %}
-        <button class="tab-button flex-1 flex justify-center items-center text-center h-9 rounded-full text-white {% if forloop.first %}active{% endif %}" data-tab-target="#{{ item.id }}">{{ item.title }}</button>
+        <button class="tab-button flex-1 flex justify-center items-center text-center h-9 rounded-full text-white cursor-pointer {% if forloop.first %}active{% endif %}" data-tab-target="#{{ item.id }}">{{ item.title }}</button>
       {% endfor %}
     </div>
   </nav>

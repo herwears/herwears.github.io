@@ -1,3 +1,38 @@
+<section class="outfit-card relative border bg-white border-2 border-neutral-200 p-3 rounded-xl shadow-sm">
+  <h2 class="text-lg font-semibold mb-2 text-indigo-900">Weekend Getaway Set</h2>
+  
+  <!-- Main Outfit Image -->
+  <div class="aspect-square relative mb-3">
+    <img class="object-cover w-full h-full rounded-lg" src="https://placehold.co/600x600/e2e8f0/475569?text=Weekend+Outfit" alt="Weekend Getaway Set">
+  </div>
+  
+  <!-- Products Below -->
+  <div class="bg-gray-50 p-2 rounded-lg">
+    <p class="text-xs text-gray-500 mb-2">Products in this outfit:</p>
+    <div class="grid grid-cols-6 gap-1">
+      <div class="aspect-square relative">
+        <img class="object-cover rounded shadow-sm" src="https://placehold.co/100/d8b4fe/6b21a8?text=1" alt="Product 1">
+      </div>
+      <div class="aspect-square relative">
+        <img class="object-cover rounded shadow-sm" src="https://placehold.co/100/c7d2fe/4338ca?text=2" alt="Product 2">
+      </div>
+      <div class="aspect-square relative">
+        <img class="object-cover rounded shadow-sm" src="https://placehold.co/100/bae6fd/0284c7?text=3" alt="Product 3">
+      </div>
+      <div class="aspect-square relative">
+        <img class="object-cover rounded shadow-sm" src="https://placehold.co/100/bbf7d0/16a34a?text=4" alt="Product 4">
+      </div>
+      <div class="aspect-square relative">
+        <img class="object-cover rounded shadow-sm" src="https://placehold.co/100/fed7aa/c2410c?text=5" alt="Product 5">
+      </div>
+      <div class="aspect-square relative">
+        <img class="object-cover rounded shadow-sm" src="https://placehold.co/100/fecaca/b91c1c?text=6" alt="Product 6">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% comment %}
 <div class="flex gap-x-3">
   {% for i in (1..2) %}
   <section class="relative border bg-neutral-100 border-2 border-neutral-300 p-2 rounded-xl">
@@ -82,3 +117,4 @@
 
     </div>
 </section>
+{% endcomment %}
