@@ -15,3 +15,6 @@ collections:
   collections:
     output: true
     permalink: /collection/:name/
+  outfits:
+    output: true
+    permalink: /outfits/:name/

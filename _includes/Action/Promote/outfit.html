@@ -1,7 +1,10 @@
+{% assign data = include.product_data %}
+{% assign database_outfit = site.data.database_outfits[data.file_ref] %}
+
 <section class="outfit-card relative border bg-white border-2 border-neutral-200 p-3 rounded-xl shadow-sm">
   <div class="flex items-center justify-between mb-3">
     <div>
-      <h2 class="text-base sm:text-lg font-semibold text-indigo-900">Weekend Getaway Set</h2>
+      <h2 class="text-base sm:text-lg font-semibold text-indigo-900">{{ data.title }}</h2>
       <p class="text-xs text-gray-500">Perfect for casual outings</p>
     </div>
     <div class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded-full">
@@ -12,7 +15,8 @@
       <!-- Main Outfit Image -->
       <div class="w-2/3">
         <div class="aspect-square relative">
-          <img class="object-cover w-full h-full rounded-lg" src="/assets/images/kemeja-4.jfif" alt="Weekend Getaway Set">
+          <img class="object-cover w-full h-full rounded-lg" src="/assets/images/kemeja-4.jfif" alt="{{ data.title }}">
+          <span class="absolute rounded-sm flex items-center inline-flex items-center bg-gray-50 text-xs font-medium text-gray-500 justify-center right-1 bottom-1 p-1">Kemeja_3a</span>
         </div>
       </div>
       

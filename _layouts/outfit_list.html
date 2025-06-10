@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<div class="flex flex-col gap-6">
+  <!-- Main Outfit Image -->
+  <div>
+    <div class="aspect-square relative rounded-lg overflow-hidden shadow-md">
+      <img class="object-cover w-full h-full" src="https://placehold.co/800x800/e2e8f0/475569?text=Weekend+Outfit" alt="Weekend Getaway Set">
+    </div>
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold text-gray-800">About this outfit</h2>
+      <p class="text-gray-600 mt-2">
+        This carefully curated weekend getaway set is perfect for casual outings. The versatile pieces can be mixed and matched for different looks throughout your trip.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded-full">Casual</span>
+        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded-full">Weekend</span>
+        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded-full">Travel</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Products List -->
+  <div>
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Products in this outfit</h2>
+    
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {% assign product_file = site.data.database_outfits[page.outfit_ref].products %}
+
+      {% if product_file.size > 0 %}
+
+        {% for item in product_file %}
+          {% assign product = site.data.database_products[item.source] | where: "code", item.code | first %}
+          {% include productItems.html product=product %}
+        {% endfor %}
+
+      {% else %}
+        <p>Tidak ada produk di kategori ini.</p>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

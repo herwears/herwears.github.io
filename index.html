@@ -32,7 +32,7 @@ permalink: /
 <div class="tab-content-wrapper">
   {% for item in site.data.homepage %}
     <div id="{{ item.id }}" class="tab-content {% unless forloop.first %}hidden{% endunless %}">
-      {% assign current_data = site.data[item.id] %}
+      {% assign current_data = site.data.database_homepage[item.id] %}
 
       <!-- Sekarang kamu bisa mengakses data dari file JSON yang sesuai -->
       <div class="flex flex-col gap-y-3">

@@ -3,12 +3,12 @@
     "id": "topi",
     "type": "Promote/outfit",
     "data": {
-      "title": "Topi Terkini",
+      "title": "Outfit Ngantor",
       "id": "topi",
       "description": "Temukan topi terbaik untuk gayamu.",
       "type": "collection",
       "textSum": "[NUMBER] Products",
-      "product_ref": "product_topi"
+      "file_ref": "outfit_001"
     }
   }
 ]
