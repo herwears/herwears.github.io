@@ -2,11 +2,13 @@
 layout: default
 ---
 
+{% assign product_file = site.data.database.outfits[page.file_ref] %}
+<p>{{ product_file }}</p>
 <div class="flex flex-col gap-6">
   <!-- Main Outfit Image -->
   <div>
     <div class="aspect-square relative rounded-lg overflow-hidden shadow-md">
-      <img class="object-cover w-full h-full" src="https://placehold.co/800x800/e2e8f0/475569?text=Weekend+Outfit" alt="Weekend Getaway Set">
+      <img class="object-cover w-full h-full" src="{{ product_file.image }}" alt="Weekend Getaway Set">
     </div>
     <div class="mt-4">
       <h2 class="text-lg font-semibold text-gray-800">About this outfit</h2>
@@ -26,7 +28,7 @@ layout: default
     <h2 class="text-lg font-semibold text-gray-800 mb-4">Products in this outfit</h2>
     
     <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
-      {% assign product_file = site.data.database.outfits[page.outfit_ref].products %}
+      {% assign product_file = product_file.products %}
 
       {% if product_file.size > 0 %}
 

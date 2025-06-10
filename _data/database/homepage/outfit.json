@@ -1,10 +1,22 @@
 [
   {
     "id": "topi",
-    "type": "Promote/outfit",
+    "type": "Promote/outfit/style_1",
     "data": {
-      "title": "Outfit Ngantor",
+      "title": "Outfit Ngantor Style 1",
       "id": "outfit_001",
+      "description": "Temukan topi terbaik untuk gayamu.",
+      "type": "collection",
+      "textSum": "[NUMBER] Items",
+      "file_ref": "outfit_001"
+    }
+  },
+  {
+    "id": "topi",
+    "type": "Promote/outfit/style_2",
+    "data": {
+      "title": "Outfit Ngantor Style 2",
+      "id": "outfit_002",
       "description": "Temukan topi terbaik untuk gayamu.",
       "type": "collection",
       "textSum": "[NUMBER] Items",
