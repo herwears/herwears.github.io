@@ -4,10 +4,10 @@
     "type": "Promote/outfit",
     "data": {
       "title": "Outfit Ngantor",
-      "id": "topi",
+      "id": "outfit_001",
       "description": "Temukan topi terbaik untuk gayamu.",
       "type": "collection",
-      "textSum": "[NUMBER] Products",
+      "textSum": "[NUMBER] Items",
       "file_ref": "outfit_001"
     }
   }
