@@ -1,59 +1,62 @@
-<head>
-  <script src="{{ '/assets/js/tailwindcss-browser@4.js' | relative_url }}"></script>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!DOCTYPE html>
+<html lang="en" class="scroll-pt-20">
+  <head>
+    <script src="{{ '/assets/js/tailwindcss-browser@4.js' | relative_url }}"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}" />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace | truncate: 160 }}" />
 
-  <!-- ✅ Tambahkan custom CSS kamu di bawah sini -->
-  <link rel="stylesheet" href="{{ '/assets/css/fix.css' | relative_url }}" />
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" /> -->
+    <!-- ✅ Tambahkan custom CSS kamu di bawah sini -->
+    <link rel="stylesheet" href="{{ '/assets/css/fix.css' | relative_url }}" />
+    <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" /> -->
 
-  <!-- Favicon, fonts, dsb -->
-</head>
+    <!-- Favicon, fonts, dsb -->
+  </head>
 
-<body class="p-2 sm:px-0 max-w-[580px] mx-auto">
-  <div class="has fixed bg-white h-2 z-8 top-0 max-w-[inherit] mx-auto my-0 inset-x-2 sm:inset-x-0"></div>
-  <header class="mb-5">{% include default/Header.html %}</header>
-  <style>
-    #app-messages, #license-info{display: none !important}
-  </style>
-  <div id="app-messages" style="
-    background-color: #ffe0e0;
-    color: #d32f2f;
-    border: 1px solid #d32f2f;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    font-family: sans-serif;
-    font-size: 14px;
-    display: none !important /* Sembunyikan secara default */
-"></div>
+  <body class="p-2 sm:px-0 max-w-[580px] mx-auto">
+    <div class="has fixed bg-white h-2 z-8 top-0 max-w-[inherit] mx-auto my-0 inset-x-2 sm:inset-x-0"></div>
+    <header class="mb-5">{% include default/Header.html %}</header>
+    <style>
+      #app-messages, #license-info{display: none !important}
+    </style>
+    <div id="app-messages" style="
+      background-color: #ffe0e0;
+      color: #d32f2f;
+      border: 1px solid #d32f2f;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      font-family: sans-serif;
+      font-size: 14px;
+      display: none !important /* Sembunyikan secara default */
+  "></div>
 
-<div id="license-info" style="
-    background-color: #e8f5e9;
-    color: #388e3c;
-    border: 1px solid #388e3c;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    font-family: sans-serif;
-    font-size: 14px;
-    display: none !important /* Sembunyikan secara default */
-"></div>
-  <main class="mb-5">{{ content }}</main>
-  <footer>{% include default/Footer.html %}</footer>
-  <svg class="hidden">{% include default/Icons.html %}</svg>
+  <div id="license-info" style="
+      background-color: #e8f5e9;
+      color: #388e3c;
+      border: 1px solid #388e3c;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      font-family: sans-serif;
+      font-size: 14px;
+      display: none !important /* Sembunyikan secara default */
+  "></div>
+    <main class="mb-5">{{ content }}</main>
+    <footer>{% include default/Footer.html %}</footer>
+    <svg class="hidden">{% include default/Icons.html %}</svg>
 
-  {% include default/Modal.html %}
-  
-  <style>
-    .backdrop {background-color:rgba(0,0,0,.6);z-index:8;opacity:0;visibility:hidden;transition:all .2s ease;position:fixed;top:0;right:0;bottom:0;left:0;}.has-unique-link .backdrop {opacity:1;visibility:visible;}
-  </style>
-  <div class="backdrop"></div>
+    {% include default/Modal.html %}
+    
+    <style>
+      .backdrop {background-color:rgba(0,0,0,.6);z-index:8;opacity:0;visibility:hidden;transition:all .2s ease;position:fixed;top:0;right:0;bottom:0;left:0;}.has-unique-link .backdrop {opacity:1;visibility:visible;}
+    </style>
+    <div class="backdrop"></div>
 
-  {% include default/Script.html %}
-</body>
+    {% include default/Script.html %}
+  </body>
+</html>
